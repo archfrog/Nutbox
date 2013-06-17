@@ -1,0 +1,56 @@
+SUMMARY
+    Fills the specified disk completely.
+
+SYNOPSIS
+    "diskfill" *option target
+
+DESCRIPTION
+    Fills the specified disk by creating the data file 'diskfill.dat', which
+    is filled with zeroes until the disk is nearly full.
+
+OPTIONS
+    --delete         Delete 'diskfill.dat' after filling the disk.
+    --reserve:size   Reserve the specified size as free space.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    diskfill --delete -reserve:1g d:\
+    Fills the disk 'D:' until there is one gigabyte of free space on it after
+    which the file 'diskfill.dat' is automatically deleted, making all space
+    free on the drive again.  This is useful for quickly erasing data on the
+    disk (although not all data is erased this way).
+
+    diskfill --reserve:100k c:\
+    Try out how Windows behaves when there is little free space on the drive.
+
+TIPS
+    1. 'diskfill' is very useful for two things: 1) to test disk full
+       conditions and 2) to wipe unused disk space quickly.
+    2. Remember to delete the 'diskfill.dat' file after use!
+
+BUGS
+    1. Due to buggy .NET or Win64 code, the disk will not always be filled
+       completely!  'diskfill' does what it is supposed to, but .NET reports
+       incorrect free disk information to the .NET program.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The 'more' command (part of your operating system).

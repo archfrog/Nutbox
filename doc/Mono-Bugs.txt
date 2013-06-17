@@ -1,0 +1,17 @@
+This is a list of bugs or inconveniences found in Mono v2.4.2.1 while testing
+the Nutbox package under Mono.  If they are real bugs, I don't know.  I just
+know that they act as show-stoppers on microscopic parts of the Nutbox project.
+
+1. INCORRECT EXIT CODE
+The 'mono' command does not return the exit code of the command that was
+invoked.  For instance, if I invoke 'true', which always returns a zero exit
+code, 'mono' returns 255 to its caller.  This makes automatic use of the Nutbox
+project virtually impossible under Mono.  On .NET 2.0 under Windows, the proper
+exit code is returned. This pretty much breaks Nutbox use on *nix platforms.
+
+FAILURE TO PROCESS CTRL-D AS END OF FILE
+2. Improper behavior when reading lines from stdin; on *nix, you'd expect
+Ctrl-D to mean "end of file".  The Nutbox 'cat' command just prints some
+bizarre character and continues - even though it is reading from stdin.
+Obviously, you cannot type Ctrl-Z as this means "suspend current process" in
+most shells on *nix.

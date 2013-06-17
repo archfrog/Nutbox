@@ -1,0 +1,57 @@
+SUMMARY
+    Counts the number of characters, words, and lines in one or more files.
+
+SYNOPSIS
+    "wc" *option *filename
+
+DESCRIPTION
+    Counts the number of characters, words, and lines in the specified files,
+    using the standard input device if no file is specified.
+
+OPTIONS
+    -c, --bytes, --chars    Display the number of characters in each input.
+    -l, --lines             Display the number of lines in each input.
+    -L, --max-line-length   Display the maximum line length encountered.
+    -r, --recurse           Recurse subdirectories.
+    -w, --words             Display the number of words in each input.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    wc readme.txt
+    Displays the lines, words, and characters in 'readme.txt'.
+
+    wc -L *.cs
+    Displays the longest line in the specified set of C# source files.
+
+TIPS
+    1. The default is to display lines, words, and characters (in that order).
+    2. 'wc' is Unicode aware and SHOULD handle Unicode files.  Due to lack of
+       real test cases, I have not been able to test this properly, though.
+    3. 'wc' should handle Windows, Unix, and Macintosh newline conventions.
+
+BUGS
+    1. Like GNU 'wc', Nutbox.wc fails to count the last line if it ends in
+       end-of-file instead of a newline character sequence.
+
+COMPATIBILITY
+    Nutbox.wc is a superset of GNU wc (AFAIK).
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    N/A.

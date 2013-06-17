@@ -1,0 +1,44 @@
+SUMMARY
+    Displays the name of the currently logged in user.
+
+SYNOPSIS
+    "whoami"
+
+DESCRIPTION
+    Grabs the USERNAME environment variable and prints its value to the
+    standard output device.
+
+OPTIONS
+    N/A.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    whoami
+    Displays the current user's user name.
+
+TIPS
+    None.
+
+BUGS
+    1. 'whoami' ought to use the Win32/Win64 API GetUserName(), but I have
+       not been able to locate a .NET equivalent.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    None.

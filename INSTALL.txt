@@ -1,0 +1,18 @@
+Windows:
+
+    1. Copy the files in the bin directory to whatever directory you fancy.
+    2. Ensure the directory that now holds the executables is in the PATH.
+
+Linux/Solaris:
+
+    1. Invoke the command: bash ./INSTALL.sh and follow the instructions.
+    2. Add the directory that now holds the executables to your PATH.
+
+    Note: 
+    If 'mono' is not in the PATH, which INSTALL.sh assumes, you should add it 
+    prior to invoking INSTALL.sh.  Alternatively, you can use INSTALL.sh as a 
+    reference when manually installing Nutbox.
+
+Macintosh:
+
+    1. I have no clue; I only used a Mac once for about an hour (by accident).

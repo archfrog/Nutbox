@@ -1,0 +1,53 @@
+SUMMARY
+    Copies the time stamp of the source to the target.
+
+SYNOPSIS
+    "datecopy" source target
+
+DESCRIPTION
+    Copies the three time stamps of the source file to the target file.
+
+OPTIONS
+    N/A.
+
+EXIT CODES
+    The Nutbox-wide codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error during execution.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    datecopy foo bar
+    Makes the time stamp (modified time, etc.) of bar identical to that of foo.
+
+    datecopy "My Document.odt" "My Document.docx"
+    Copies the date of the original OpenOffice.org document to the newly
+    created, by OdfConverter, Microsoft Office 2007 Word document.
+
+TIPS
+    1. 'datecopy' is very useful in some conversion scenarios.  If you use the
+        OdfConverter tool (http://www.sourceforge.net/projects/odfconverter),
+        it does not currently copy the time stamp of the original file to the
+        converted file.  But for many users, the time stamp of their documents
+        is a very important clue to when and why the document was made.
+
+BUGS
+    Unknown.
+
+FUTURE
+    No future enhancements are planned for 'datecopy'.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The 'touch' command.

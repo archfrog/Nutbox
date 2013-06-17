@@ -1,0 +1,40 @@
+LICENSE
+Nutbox is freeware, open source and Public Domain, and may be distributed 
+freely, whether modified, complete or in part.  It may even be distributed as 
+part of commercial projects (for use by installation scripts, etc.).  This 
+loose license is intentional as I all too well remember being a software 
+developer, working for a commercial business, who all the time ran his head 
+into obnoxious licenses that inhibited the use of the otherwise freeware tools 
+in the business' commercial products.  
+
+Please notice that you expressly do not need to include my copyleft message in 
+derived or cloned works.  That something is Public Domain basically means that 
+everybody can do whatever they like with it - even sell it for money.  
+
+So if you hear of somebody selling Nutbox for money, please let them continue 
+to do so :-)
+
+Consider this my move to work towards a patent and copyright free world where 
+people spend their time on making great projects that everybody may use freely 
+rather than on working out the most elaborate licenses ever imagined by 
+mankind.  Nutbox is Public Domain!  This means you may do whatever you please 
+with it - without needing to apply for my permission in any case whatsoever!  
+As far as I recall, I have no particular rights over the material once I 
+have released it to the Public Domain - and cannot even later revoke the 
+Public Domain classification.  This is intentional, so as to give YOU the 
+greatest possible degree of freedom in using Nutbox for whatever purpose that 
+suits you.  The license means that you may freely copy, alter, edit, revise, 
+extend, reduce, clone, emulate, and incorporate parts of or the entirety of 
+Nutbox into whatever projects you can dream up.
+
+Obviously, I wouldn't MIND that you included a notice that your work was based
+upon Nutbox, or parts of it, but I expressly do not require that you do so.
+
+I don't mind getting an email about where and how Nutbox is used, though.
+
+Nutbox is provided AS IS without any implicit or explicit guarantees.  If
+Nutbox fails you in any way, even to the extent of causing unwanted deaths or
+suicides, YOU are the responsible party, because YOU made the choice of using
+Nutbox for whatever you are using Nutbox for.  The author, Mikael Lyngvig, can 
+in no event be held liable for anything whatsoever no matter his role in it.
+

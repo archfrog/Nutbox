@@ -1,0 +1,58 @@
+SUMMARY
+    Touches (updates the time of) one or more files.
+
+SYNOPSIS
+    "touch" *option +wildcard
+
+DESCRIPTION
+    Updates the specified files' time stamps to the current time.  If a file
+    does not already exist, it is created (with a length of zero).
+
+    The time format, used by the '-time' option is the standard Nutbox time
+    format: YYYY.MM.DD.HH.II.SS.LLLL.
+
+OPTIONS
+    -f, --force        Force update of read-only files.
+    -r, --recurse      Process subdirectories too.
+    -t, --time:value   Use the specified time instead of the current time.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    touch newfile.txt
+    Assuming 'newfile.txt' does not exist, it is created as a new file.
+
+    touch --recurse *.hlp
+    Touch all help texts found in the current directory and subdiretories so as
+    to make some make tool rebuild their dependents.  Not the smartest way of
+    doing this, but nonetheless very commonly used.
+
+    touch --time:2009.07.19.23.12 foo.txt
+    Sets the time of 'foo.txt' to the specified time.
+
+TIPS
+    1. 'touch' is very useful with some make files.
+
+BUGS
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The Nutbox 'rm' command.

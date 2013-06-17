@@ -1,0 +1,50 @@
+SUMMARY
+    Displays the time taken to execute a given command.
+
+SYNOPSIS
+    "exectime" *option command *parameter
+
+DESCRIPTION
+    Invokes the specified command and prints the time it took to execute.
+
+OPTIONS
+    --quiet   Silently discard the output of the command.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    exectime --quiet mycommand myarg1 myarg2
+    Silently invokes the command 'mycommand', passing it the parameters 'arg1'
+    and 'arg2', and finally prints the time it took to execute the command.
+
+    exectime cmd.exe /c dir c:\ /s
+    Invokes CMD.EXE to execute the command "dir c:\ /s", prints the output,
+    and finally prints the time it took.
+
+TIPS
+    1. Use --quiet to avoid timing the console output itself (the console is
+       very slow compared to the nul device).
+
+BUGS
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The 'more' command (part of your operating system).

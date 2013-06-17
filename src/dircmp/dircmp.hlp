@@ -1,0 +1,86 @@
+SUMMARY
+    Compares the specified directories and optionally synchronizes them.
+
+SYNOPSIS
+    "dircmp" *option source target
+
+DESCRIPTION
+    Compares the source directory with the target directory, making a report
+    that describes the steps necessary to make target identical to source.
+    Optionally synchronizes the target with the source so that the target
+    actually becomes identical to the source.
+
+    The main features of 'dircmp' are:
+
+       1. 'dircmp' reports a very concise and brief difference report, which
+          is very suitable for further automatic processing.
+       2. 'dircmp' offers the option of synchronizing the target to the source.
+       3. 'dircmp' runs out-of-the-box on a host of platforms.
+       4. 'dircmp' offers full Unicode support (as does all of Nutbox).
+
+OPTIONS
+    --deep       Enable deep comparison of file data (compare contents).
+    --exclude:x  Exclude directory 'x' (\x) from the comparison and update.
+    --force      Force deletion of read-only files and directories.
+    --full       Display equal items too.
+    --sync       Synchronize target with source.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+LEGEND
+    =   The item is identical in both source and target.
+    *   The item must be updated from the source.
+    +   The item must be added from the source to the target.
+    -   The item must be deleted from the target.
+
+EXIT CODES
+    The Nutbox-wide codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error during execution.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    dircmp c:\foo d:\bar
+    Reports the differences between 'c:\foo' and 'd:\bar'.
+
+    dircmp --sync c:\foo d:\bar
+    Makes 'd:\bar' identical to 'c:\foo'.
+
+    dircmp --sync --exclude:\bak c:\foo d:\bar
+    Makes 'd:\bar\ identical to 'c:\foo', except 'c:\foo\bak' is ignored.
+
+TIPS
+    1. 'dircmp' is very useful to keep two disks or directory trees identical.
+    2. ALWAYS run 'dircmp' without the --sync option prior to using --sync:
+       'dircmp' is a program and programs contains bugs for which reason you
+       should ALWAYS manually verify that the result is as you expect to be
+       PRIOR to asking 'dircmp' to synchronize two directories.
+    3. If 'dircmp' exits with an error, you can always rerun the tool.
+
+BUGS
+    1. 'dircmp' only handles plain files and directories.  Junctions, links,
+       etc. are not supported and the function of 'dircmp' is undefined if
+       such disk items are processed by 'dircmp'.
+    2. 'dircmp' sucks away memory as if it got paid to do so.  In daily use,
+       'dircmp' can easily use 150-200 megabytes of memory when comparing two
+       distinct disks.  This is quite typical of many Windows programs, though.
+    3. 'dircmp' does not support FAT drives well because these do not support
+       the 64-bit time stamps that Win32 and Win64 use.
+
+FUTURE
+    1.  Some day support for junctions, links, etc. will be added.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The 'more' command (part of your operating system).

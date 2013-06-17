@@ -1,0 +1,61 @@
+SUMMARY
+    Displays the size of one or more directories.
+
+SYNOPSIS
+    "dirsize" +wildcard
+
+DESCRIPTION
+    Calculates the amount of space used by each directory that matches the
+    specified wildcards.
+
+OPTIONS
+    N/A.
+
+EXIT CODES
+    The Nutbox-wide codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error during execution.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    dirsize \*
+    Prints the sizes of each of the directories found in the root directory
+    of the current directory as well as a sum total ("(total)") of all the
+    directories.
+
+    dirsize * | sort | more
+    Displays the sizes of all subdirectories of the current directory so that
+    the smallest are sorted first and the largest are sorted last, in such a
+    manner that the user can interactively peruse the report.
+
+    dirsize * | sort --reverse
+    Displays the sizes of all subdirectories of the current directory so that
+    the largest are sorted first and the smallest are sorted last.
+
+TIPS
+    1. 'dirsize' is very handy when you want to clean up your disk of unused,
+       unwanted data.  Start in the root directory, by invoking the command
+       "dirsize *", then work your way into the directory tree, until you have
+       found the culprit.  Delete and repeat until sufficient free space is
+       once again available.
+
+BUGS
+    1. 'dirsize' itself.  The proper solution is a POSIX command named 'du'.
+       So expect the 'dirsize' command to be outphased and replaced by an
+       appropriate version of 'du'.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The Nutbox 'sort' command.
+    2. The 'more' command (part of your operating system).

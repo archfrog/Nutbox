@@ -1,0 +1,21 @@
+# cmd: exit-code command
+# chk: data.equals file1 file2
+
+cmd: 0 echo. | cat
+
+cmd: 2 cat --help
+
+cmd: 2 cat -?
+
+cmd: 2 cat /?
+
+cmd: 0 cat file0001.txt
+
+cmd: 0 cat file0001.txt file0002.txt
+
+cmd: 1 cat missing.txt			# note: the file 'missing.txt' must be missing!
+
+cmd: 1 cat missing.txt file0001.txt
+
+cmd: 1 cat file0001.txxt missing.txt
+

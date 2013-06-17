@@ -1,0 +1,53 @@
+SUMMARY
+    Kills a process specified by name or process id.
+
+SYNOPSIS
+    "kill" process
+
+DESCRIPTION
+    Kills (terminates) the process specified by the specified name or id.
+    For safety reasons, 'kill' only allows killing one process at a time.
+
+OPTIONS
+    -9, --force   Force the process to shut down immediately.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    kill 3096
+    Kills the process whose process identifier is 3096, if any.
+
+    kill cmd
+    Kills the process whose name is 'cmd', if any, or reports an error if
+    multiple such processes exist in the system.
+
+    kill -9 winamp
+    Kills the specified process immediately without giving it the option of
+    ignoring or rejecting the kill request.
+
+TIPS
+    None.
+
+BUGS
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The Nutbox 'ps' command.

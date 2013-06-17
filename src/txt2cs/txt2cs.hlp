@@ -1,0 +1,56 @@
+SUMMARY
+    Converts a text file into a C# source file.
+
+SYNOPSIS
+    "txt2cs" *option name source ?target
+
+DESCRIPTION
+    Converts the specified text file to a C# source file.  This is very useful
+    for maintaining good help texts.
+
+OPTIONS
+    --format:array     Create an array of strings (lines).
+    --format:string   Create a string with embedded newlines.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    txt2cs --format:string Foo.Text.Help foo_help.txt foo_help.cs
+    Generates a source file containing the definition of the string variable
+    Foo.Text.Help, where Foo is the namespace name, Text is the class name, and
+    Help is the symbol name.
+
+    txt2cs --format:array Foo.Bar.Text.Help foo_help.txt
+    Generates a source file containing the definition of the array variable
+    Foo.Bar.Text.Help, where Foo.Bar is the namespace name, Text is the class
+    name, and Help is the symbol name.  The result is written to the file
+    'foo_help.txt.cs'.
+
+TIPS
+    1. If no output file is given, 'txt2cs' creates an output file with the
+       same name as the input file but with an added extension of '.cs'.
+
+BUGS
+    1. Could be more configurable with respect to making a sealed class and
+       a private constructor.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. Nutbox 'txt2c' (Generates C source from a text file).

@@ -1,0 +1,61 @@
+Nutbox and GNU
+Nutbox is not GNU and GNU is not Nutbox.  Nutbox does not attempt to emulate or
+surpass GNU tools in any way.  Nutbox is a small hobby project made by a single
+programmer, GNU is a way of life made by hundreds of programmers.  Nonetheless,
+some will wonder what the differences are between GNU and Nutbox.  This
+document attempts to answer that question.
+
+Roughly speaking, the differences are:
+
+    1. Nutbox runs natively on Windows platforms whereas GNU tools must be
+       hacked quite a bit to make them build on Windows (as far as I know).
+    2. Nutbox also runs on Linux, Solaris, and Macintosh using Mono.  GNU 
+       runs on a host of platforms - way too many to mention here - and is 
+       probably ported to more platforms each and every day.  Nutbox will 
+       forever be locked in on the Microsoft .NET platform for which reason 
+       it cannot run on any other platforms than those that are supported
+       by .NET or Mono.
+    3. GNU tools attempt to solve every conceivable need under the sky, whereas
+       Nutbox only attempts to solve the everyday needs of most people.  A
+       typical GNU tool boasts twenty or more options.  A typical Nutbox tool
+       has only two or three options.  This may change over time, but I am
+       definitely not planning on spending my life adding options to Nutbox.
+    4. GNU tools are copylefted in such a manner that they may not be used in
+       closed-source commercial tools.  I understand the reasoning behind this,
+       but also remember how frustrating it was to be a software developer in
+       need of tools that could be shipped in products.  Nutbox is Public
+       Domain, meaning that everybody may do whatever they like with it - even
+       commercially.
+    5. GNU tools are ancient (many of them stem back from the seventies or
+       eighties), whereas Nutbox tools are in their infancy.  This translates
+       to: Few features, occasional bugs, and lots to desire.
+    6. GNU tools on Windows are normally 32-bit tools.  Nutbox uses .NET for
+       which reason the program "adapts itself" to the host platform and runs
+       as a native 32-bit application on 32-bit platforms and as a native
+       64-bit application on 64-bit platforms (I myself use Windows x64).
+    7. GNU tools often depend on a host of other GNU tools.  Nutbox only
+       depends upon a freely available command-line compiler from either
+       Microsoft (included in .NET) or from Novell (included in Mono).  Nutbox
+       is thus pretty straigthforward to dig into and munge about with.
+    8. GNU is included in most Linux distrubutions by default (for which reason
+       GNU insists that Linux should be called GNU/Linux).  Nutbox is so new,
+       only a couple of weeks old at the time of this writing, that nobody has
+       included it anywhere.  I personally doubt that Nutbox will ever be
+       included in a Linux distribution: The GNU tools are better, bigger,
+       perhaps even faster, and widely used.  Some of the Nutbox tools, such as
+       'pathcheck' might make sense to include in a Linux distro, but I have to
+       see it done before I will believe it.
+    9. GNU is intended to supplement *nix environments (which are typically
+       fairly well-equipped in terms of additional console commands) for which
+       reason GNU has to add lots and lots of features.  Nutbox is primarily
+       intended to supplement Windows environments for which reason only very
+       little has to be done (because Windows is so poor in terms of additional
+       console utilities).
+   10. GNU is out on a mission: To conquer the world with free software.
+       Nutbox is just a hobby project, which means I work on it when I have
+       some spare time - and feel like it!
+   11. GNU tools are generally NOT Unicode aware.  Nutbox tools are generally
+       Unicode aware.  A great example of this is the Nutbox 'strings' command:
+       It is capable of extracting and displaying Unicode strings embedded in
+       binary files, whereas GNU 'strings' does not handle Unicode strings
+       (actually, I think it does, but Nutbox is thoroughly Unicode aware).

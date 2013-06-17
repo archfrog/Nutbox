@@ -1,0 +1,56 @@
+SUMMARY
+    Replaces all occurences of the specified patterns in the specified names.
+
+SYNOPSIS
+    "filenameedit" *option +pattern +wildcard
+
+DESCRIPTION
+    Renames each found file according to the specified patterns.
+
+OPTIONS
+    --recurse   Recurse subdirectories.
+    --test      Display changes without making them.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    filenameedit -recurse ".= " *.mp3
+    Changes all dots in the names (excluding the extension part) of the found
+    MP3 files into spaces.  For instance, "Foo.bar.mp3" becomes "Foo bar.mp3".
+
+    filenameedit --recurse "FOO BAR=Foo Bar" *.mp3
+    Changes all occurences of "FOO BAR" to "Foo Bar" in all MP3 files in the
+    current directory and all its subdirectories.
+
+TIPS
+    1. Pattern is of the form 'old=new', where 'old' is the literal string to
+       search for and 'new' is the string to replace with.
+    2. This version of 'filenameedit' always uses case-sensitive searches.
+    3. Always use the '--test' option prior to making the actual change!
+
+BUGS
+    Unknown.
+
+FUTURE
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    The 'ren' command on Windows and the 'mv' command on Unices.

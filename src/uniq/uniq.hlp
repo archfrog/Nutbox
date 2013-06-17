@@ -1,0 +1,51 @@
+SUMMARY
+    Filters out successive duplicate lines from a file or standard input.
+
+SYNOPSIS
+    "uniq" ?filename
+
+DESCRIPTION
+    Filters out successive duplicate lines from the input so that only one
+    copy of the duplicate elements is retained.
+
+    'uniq' requires its input to be sorted, for which reason it is typically
+    used immediately after the 'sort' command in a pipeline of commands.
+
+OPTIONS
+    N/A.
+
+EXIT CODES
+    The Nutbox-wide codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error during execution.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    cat members.txt | sort | uniq > sorted.txt
+    Sorts the contents of the 'members.txt' file, removes duplicates, and
+    stores the output in 'sorted.txt'.
+
+    uniq foo.txt > bar.txt
+    Removes all duplicates in the already sorted file 'foo.txt' and outputs
+    the result to 'bar.txt'.
+
+TIPS
+    1. 'uniq' is highly useful with the 'sort' command: "cat x | sort | uniq".
+
+BUGS
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The Nutbox 'sort' command.

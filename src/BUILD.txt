@@ -1,0 +1,35 @@
+INTRODUCTION
+Nutbox v1.00 builds with the included 'build' utility.  This utility, which
+is portable to all .NET/Mono platforms, builds/makes Nutbox from scratch.
+
+Nutbox v1.00 can be built using any of these compilers:
+
+    1. Microsoft.NET v2.0.50727.
+    2. Microsoft.NET v3.5.
+    3. Microsoft.NET v4.0.30319.
+    4. Mono v2.6.x.
+    5. Mono v2.10.x.
+
+BUILDING USING MICROSOFT .NET v3.5 COMMAND-LINE COMPILER
+To build Nutbox using the C# compiler (csc.exe) included in .NET v3.5:
+
+    1. Add Microsoft.NET v3.5 csc.exe to your path.
+       It is located in "%SYSTEMROOT%\Microsoft.NET\Framework\v3.5".
+    2. Issue the command: csc /checked+ build.cs
+    3. View the online help: build.exe -help
+    4. Build Nutbox: build.exe -nodoc
+
+BUILDING USING MONO v2.6+ COMMAND-LINE COMPILER
+To build Nutbox using the C# compiler (mcs) included in Mono v2.6+:
+
+    1. Add Mono v2.6+ mcs.bat to your path.
+       It is located in "%ProgramFiles%\Mono-vA.B.C\bin" on x86 platforms
+       and in "%ProgramFiles (x86)%\Mono-vA.B.C\bin" on x64 platforms.
+    On *nixes, it is usually already in the path.
+    2. Issue the command: mcs /checked+ build.cs
+    3. View the online help: mono build.exe -help
+    4. Build Nutbox: mono build.exe -nodoc
+
+SUMMARY
+The Microsoft C# compiler is very fast but the Mono C# compiler generates much
+smaller executables (about 25 percent smaller).  Suit yourself, both are free.

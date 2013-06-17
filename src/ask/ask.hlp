@@ -1,0 +1,51 @@
+SUMMARY
+    Asks the user a question with a GUI dialog and returns suitable exit code.
+
+SYNOPSIS
+    "ask" *option +word
+
+DESCRIPTION
+    Concatenates the list of words and displays them as a single message after
+    which the program awaits the user's reply, which is then signalled to the
+    client using the 'ask' command's exit code.
+
+OPTIONS
+    --title:text   Changes the default title ("Message") into the given text.
+    --yesno        Ask Yes/No rather than OK/Cancel.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+    These exit codes are extended by 'ask' as follows:
+
+        100 - The user selected OK or Yes.
+        101 - The user selected Cancel or No.
+
+EXAMPLES
+    ask -title:Alert! "Do you want to erase 'foo.bar'?"
+    Displays the string "Do you want to erase 'foo.bar'" and waits for the user 
+    to interactively select or click the OK or Cancel button.
+
+TIPS
+    1. 'ask' is very handy for script writers.
+
+BUGS
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. Nutbox.message, which displays a message without returning the result.

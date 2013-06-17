@@ -1,0 +1,5 @@
+The documentation is included in each command: Invoke the command in question
+with the "--help" option and it will pour out a fairly detailed help text.  To
+be able to read the help text, pipe the output into more:
+
+    command --help | more

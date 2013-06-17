@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Nutbox Master To-Do List</title>
+	</head>
+	</body>
+	<h1>Nutbox To-Do</h1>
+	<p>This to-do list cannot be maintained on the Internet due to the fact that
+	   the author of Nutbox, Mikael Lyngvig, does not have a permanent Internet
+	   connection for the time being.  Once I get such an Internet connection,
+	   I plan to move Nutbox to <a href="http://www.sourceforge.net" target="_blank">
+	   www.SourceForge.net</a>.</p>
+
+	<p>Please report bugs, enhancement requests, etc. to
+	   <a href="mailto:mikael@lyngvig.org">mikael@lyngvig.org</a>.</p>
+
+	<ol>
+		<li>(high) Add 'ask' command, which allows Yes/No or Cancel/Okay questions.</li>
+		<li>(high) Make 'fileedit' and 'filenameedit' fail when no files are specified.</li>
+		<li>(high) Make 'cat' support binary files as well as text files.</li>
+		<li>(high) Finish up automated test suite for testing each command elaborately.</li>
+		<li>(medium) Add 'hexdump' utility.</li>
+		<li>(low) Fix remaining issues reported by FxCop v1.36.<br>
+			This is work in progress.  So far about two-thirds of the warnings
+			have been fixed.  Some of the warnings obviously do not apply to
+			Nutbox for which reason they will never be fixed.  This includes,
+			but is not limited to, the warnings	about catching System.Exception:
+			A stand-alone application MUST catch System.Exception to be a proper
+			application or the user will experience undesirable scenarios.<br>
+			Furthermore, the "Nested types should no be visible" error is a folly;
+			using visible nested types ENHANCES readability and maintainability, IMHO.</li>
+		<li>(low) Perform rudimentary test on Mono on Solaris to see if it works.<br>
+			This has turned out to be such a big project that I am deferring it to later.<br>
+			Currently, I am banging my head against the fact that Mono's configure script
+			chokes and dies with an error near the end of the script. It seems almost
+			impossible to build Mono v2.4.2.1 on Solaris/x86 - at least I don't want to
+			invest ages on supporting a platform that I don't currently use myself.</li>
+	</ol>
+
+	<p>Dropped issues:</p>
+	<ol>
+		<li>(high) Make txt2cs trim the input prior to generating the output.<br>
+			The 'trim' command was made just for that; why overload 'txt2cs'?</li>
+	</ol>
+
+	<p>Fixed issues:</p>
+	<ol>
+		<li>(high) Fix broken 'dircmp' command - it processes "d:\" incorrectly
+			because it strips the trailing slash prior to using the parameter.</li>
+		<li>(low) Figure out standard, generic way of processing parameters.<br>
+			The problem is that I'd like to specify the set of parameters and options
+			using a suitable data structure and then let the command-line parser
+			use that data structure to parse the input - sort of clean a C#
+			version of GNU getopt.  Currently, this hangs on me	not wanting to
+			use explicit casts everywhere in the client code.  I am	still
+			contemplating the issue and will perhaps find a solution some day.</li>
+		<li>(low) Make 'dircmp' use a Dictionary rather than the current Hashtable.</li>
+		<li>(urgent) Make Nutbox.Options check that options are passed in the proper order.</li>
+		<li>(urgent) Fix Nutbox.Options so that it handles short options with args.</li>
+		<li>(urgent) Finish up the <tt>filename</tt> command: Add the diskname subcommand.</li>
+		<li>(urgent) Finish up the online help texts for all commands.</li>
+		<li>(urgent) Move the Information.Syntax descriptor into the help file.</li>
+		<li>(urgent) Figure out why 'sort' insists on putting empty lines at the end.</li>
+		<li>(high) Make <tt>rm</tt> remove read-only files if <tt>-force</tt> is in effect.</li>
+		<li>(high) Make <tt>filefind</tt> capable of reading from standard input.</li>
+		<li>(low) Figure out why "gnumake clean" does not delete the debug files.<br>
+			:: This was caused by the empty $(NUTBOX_INVOKE) macro: GNU Make does not,
+			unlike Nutmake, trim the input line AFTER macros have been expanded.  I
+			assumed GNU Make did this but, alas, it did not.  I discovered this
+			because Nutmake behaved in the same manner, in an initial version;
+			something that I quickly corrected so Nutmake behaves nicely.</li>
+		<li>(high) Create ad-hoc make utility, nutmake, which can build Nutbox on
+			all platforms using the same basic Makefile.  Yeah, I'm too lazy to
+			spend ages getting to know one of the very advanced build tools out
+			there.  Also, I always liked meddling with development tools and
+			making an ad-hoc make tool is a perfect way of enjoying life.</li>
+		<li>(high) Create strongly signed assemblies.</li>
+		<li>(low) Create and use AssemblyInfo.cs files for all tools in Nutbox.<br>
+			:: These are now embedded in the source file of each command as well
+			as in the Attributes.cs found in the Nutbox directory.</li>
+	</ol>
+	</body>
+</head>
+

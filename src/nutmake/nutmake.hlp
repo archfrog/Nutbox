@@ -1,0 +1,100 @@
+SUMMARY
+    Builds the specified targets using the 'Nutmakefile' make file.
+
+SYNOPSIS
+    "nutmake" *option +definition +target
+
+DESCRIPTION
+    Builds the specified targets, or the first target if no target is
+    specied, using the explicit rules defined in the specified make file.
+
+    Nutmake offers a few advantages over traditional make tools:
+
+        1. It is portable to any platform that supports Microsoft .NET v2.0.
+        2. It handles all linefeed formats so that the carriage-returns
+           (Windows convention) can be used on a *nix platform and vice versa.
+        3. It expands Macros without enveloping them in spaces so that macros
+           can be used to substitute a single character (useful for using a
+           macro for \ or / in file names).
+        4. It trims the source line after macros have been expanded, meaning
+           everything works as expected even if a macro expands to nothing
+           (GNU Make inserts a space that breaks the build if the macro is
+           empty - such as the empty NUTBOX_INVOKE macro).
+        5. It is simple and therefore highly reliable.
+        6. Nutmake does not import the environment.  Single variables can be
+           imported using the '--import' option.  This is a feature of Nutmake
+           as I loathe environment variable hell with dozens of unwanted and
+           undetected side effects due to bizarre importing of all environment
+           variables.
+
+OPTIONS
+    --all                  Make all targets, even if unchanged.
+    -K, --continue         Continue even when some targets fail.
+    -C, --directory:path   Change to path before loading the makefile.
+    -F, --file:name        Load the specified makefile (default: Nutmakefile).
+    --ignore               Ignore errors from invoked commands.
+    --import:name          Import the specified env. variable as a symbol.
+    --logo                 Display program logo when starting.
+    -N, --test             Display commands but don't invoke them.
+    --verbose              Display verbose output.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    nutmake
+    Attempts to build the first target in the file 'Nutmakefile' found in
+    the current directory.
+
+    nutmake --test
+    Displays the commands that would have been executed, had '--test' not been
+    specified.
+
+    nutmake --file:Makefile FOO=bar goal
+    Attempts to build the goal 'goal' in the make file 'Makefile' with the
+    symbol 'FOO' defined to the value 'bar'.
+
+TIPS
+    1. Symbol definitions are of the form 'name=data'.
+    2. 'nutmake' does NOT import the environment by default!  This is because
+       I am sick and tired of environment variable hell.
+    3. 'nutmake' is sort of a joke.  This initial version can only do the
+       MOST BASIC stuff such as building Nutbox.
+    4. 'nutmake' experimentally supports a few one letter options:
+
+          -C   Changes to the specified directory before anything else.
+          -F   Loads the specified file.
+          -K   Keeps going even if errors are detected.
+          -N   Print commands without executing them.
+
+       Please notice that each single character option must be specified by
+       itself - you cannot merge multiple single character options into one.
+
+BUGS
+    1. 'nutmake' lacks more features than it offers; for instance, 'nutmake'
+       does not support generic inference rules and concurrent compilation.
+    2. 'nutmake' does not attempt to detect circular dependencies.  Such
+       circular dependencies are most likely seen as stack overflows.
+
+FUTURE
+    Probably none.  'nutmake' may be discontinued any time.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. GNU Make (for an advanced make tool that can make coffee and more).

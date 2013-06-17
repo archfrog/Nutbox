@@ -1,0 +1,62 @@
+SUMMARY
+    Replaces all occurences of the specified patterns in the specified files.
+
+SYNOPSIS
+    "fileedit" *option +pattern +wildcard
+
+DESCRIPTION
+    Reads each input file into memory, performs the substitutions requested,
+    and writes the files back to disk.
+
+OPTIONS
+    -b, --backup    Back up original files (to *.bak).
+    -r, --recurse   Recurse subdirectories.
+
+    Any long option can be prefixed with 'no' to disable it.
+
+EXIT CODES
+    The Nutbox-wide exit codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error while executing.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    fileedit --recurse 0.8.8.0=0.9.9.0 *.cs
+    Bump the version number of Nutbox from v0.8.8.0 to v0.9.9.0.
+
+    fileedit --recurse FOO=foo BAR=bar *.cs
+    Replace all occurences of 'FOO' with 'foo' and all occurences of 'BAR' with
+    'bar' in all C# source files in the current directory and all
+    subdirectories.
+
+TIPS
+    1. Pattern is of the form 'old=new', where 'old' is the literal string to
+       search for and 'new' is the string to replace with.
+    2. This version of 'fileedit' always uses case-sensitive searches.
+    3. Files are only written if they have changed.
+
+BUGS
+    1. 'fileedit' does not currently support the standard input device.
+
+FUTURE
+    1. Make fileedit remember the input file format (Windows, Unix,
+       or Macintosh) and use that for the output files (the current
+       version silently converts the output to the Windows format).
+    2. Make fileedit capable of reading from the standard input device
+       and write to the standard output device.  This is really a must
+       for fileedit to be useful in pipe operations.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The 'sed' command (part of POSIX and of the GNU tool collection).

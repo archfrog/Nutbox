@@ -1,0 +1,80 @@
+SUMMARY
+    Manipulates the specified path according to the specified command.
+
+SYNOPSIS
+    "filename" command path
+
+DESCRIPTION
+    Performs a specified operation on the specified path name.
+
+COMMANDS
+    lower       Convert the specified path to lowercase.
+    upper       Convert the specified path to uppercase.
+    absolute    Convert the specified path to an absolute path.
+    filename    Convert the specified path to a file name.
+    dirname     Convert the specified path to a directory name.
+    drivename   Convert the specified path to a drive name (a drive letter).
+    diskname    Convert the specified path to a disk name (volume label).
+    normalize   Convert the specified path to its disk representation.
+    extension   Convert the specified path to an extension.
+
+OPTIONS
+    N/A.
+
+EXIT CODES
+    The Nutbox-wide codes adhered to by all Nutbox commands are:
+
+        0 - success; the program successfully ran to completion.
+        1 - failure; the program encountered an error during execution.
+        2 - failure; the program was asked to display its help text.
+
+EXAMPLES
+    filename lower BAR
+    Writes the string 'bar' to the standard output device.
+
+    filename upper foo
+    Writes the string 'FOO' to the standard output device.
+
+    filename absolute ..\bar
+    Writes the absolute path name of '..\bar' to the standard output device.
+
+    filename filename d:\foo\bar
+    Writes the string 'bar' to the standard output device.
+
+    filename dirname d:\foo\bar
+    Writes the string 'd:\foo' to the standard output device.
+
+    filename drivename d:\foo\bar
+    Writes the letter 'D' to the standard output device.
+
+    filename diskname u:
+    Writes the label of the disk U: to the standard output device.
+
+    filename normalize d:\foo\bar
+    Writes the string 'D:\Foo\Bar' to the standard output device if and only
+    if the name of 'd:\foo\bar' is really 'D:\Foo\Bar' on the disk itself.
+
+    filename extension d:\foo\bar.obj
+    Writes the string 'obj' to the standard output device.
+
+TIPS
+    1. The 'filename' subcommand incorporates most of the functionality of the
+       POSIX 'basename' and 'dirname' commands.
+    2. The 'diskname' subcommand supplements the Nutbox 'diskfind' command.
+
+BUGS
+    Unknown.
+
+AUTHOR
+    Written by Mikael Lyngvig (mikael@lyngvig.org).
+
+COPYRIGHT
+    Nutbox, and all parts of it, is Public Domain and may be used freely for
+    ANYTHING you like.  You may even distribute Nutbox or parts of it as part
+    of commercial software.
+
+WARRANTY
+    Nutbox is provided AS IS without implicit or explicit warranties.
+
+SEE ALSO
+    1. The Nutbox 'diskfind' command.

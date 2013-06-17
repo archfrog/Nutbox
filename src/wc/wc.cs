@@ -232,11 +232,11 @@ namespace Org.Nutbox.Wc
 			if ((bits & Setup.LINES) != 0)
 				System.Console.Write("{0,7}", value.Lines);
 			if ((bits & Setup.WORDS) != 0)
-				System.Console.Write("{0,8}", value.Words);
+				System.Console.Write(" {0,7}", value.Words);
 			if ((bits & Setup.CHARS) != 0)
-				System.Console.Write("{0,8}", value.Chars);
+				System.Console.Write(" {0,7}", value.Chars);
 			if ((bits & Setup.MAXLEN) != 0)
-				System.Console.Write("{0,8}", value.MaxLen);
+				System.Console.Write(" {0,7}", value.MaxLen);
 			System.Console.WriteLine(" {0}", filename);
 		}
 

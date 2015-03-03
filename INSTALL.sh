@@ -2,7 +2,7 @@
 # BASH shell script for installing Nutbox on *nix.
 # Execute using the command: bash ./INSTALL.sh source target
 # Note: Assumes mono is in the path, so you better make sure it is there!
-# Copyleft (-) 2009-2012 Mikael Lyngvig.  Donated to the Public Domain.
+# Copyleft (-) 2009-2015 Mikael Lyngvig.  Donated to the Public Domain.
 if [ "$2" == "" ]; then
 	echo Syntax: INSTALL.sh source target;
 	echo;

@@ -1,35 +1,35 @@
 #region license
-// Copyright (C) 2010-2012 Mikael Lyngvig (mikael@lyngvig.org).  All rights reserved.
-// 
-// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following 
+// Copyright (C) 2010-2015 Mikael Lyngvig (mikael@lyngvig.org).  All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
-// 
+//
 //     * Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer below.
-//     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following 
+//     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
 //       disclaimer in the documentation and/or other materials provided with the distribution.
-//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived 
+//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived
 //       from this software without specific prior written permission.
-// 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, 
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
 // BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
 // SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
 // DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
 /** \file
  *  Primitive build system that is portable to all platforms that support Microsoft .NET, Novell Mono, and perhaps GNU dotGNU.
- *  
+ *
  *  The help screen is displayed if the option "-help" appears in the list of parameters.
- *  
+ *
  *  Microsoft.NET:
- *  
+ *
  *  	csc /checked+ build.cs
  *  	build -help | more
- *  
+ *
  *  Novell Mono:
- *  
+ *
  *  	mcs /checked+ build.cs
  *  	mono build.exe -help | more
  */
@@ -50,17 +50,17 @@ namespace Org.Nutbox.Build
 			System.Type type = System.Type.GetType("Mono.Runtime");
 			if (type != null)
 			{
-				MethodInfo displayName = type.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static); 
+				MethodInfo displayName = type.GetMethod("GetDisplayName", BindingFlags.NonPublic | BindingFlags.Static);
 				if (displayName != null)
 				{
-					string version = (string) displayName.Invoke(null, null); 
+					string version = (string) displayName.Invoke(null, null);
 					int pos = version.IndexOf(' ');
 					if (pos != -1)
 						version = version.Substring(0, pos);
 					return version;
 				}
 			}
-			
+
 			// then try .NET
 			return RuntimeEnvironment.GetSystemVersion().Substring(1);	// discard leading 'v'
 		}
@@ -71,55 +71,55 @@ namespace Org.Nutbox.Build
 	public class Process
 	{
 		/** Creates a joined string of the specified command-line parameters.
-		 * 
+		 *
 		 *  \note The method currently only takes spaces, not reserved characters, into consideration.
 		 */
 		public static string JoinCommandLine(string[] parameters)
 		{
 			string result = "";
-	
+
 			foreach (string parameter in parameters)
 			{
 				// separate each parameter with a single space
 				if (result.Length != 0)
 					result += ' ';
-	
+
 				// handle the simple case first
 				if (parameter.IndexOf(' ') == -1)
 				{
 					result += parameter;
 					continue;
 				}
-	
+
 				// now for the complex case (with embedded spaces)
 				result += '\"';
 				result += parameter;
 				result += '\"';
 			}
-	
+
 			return result;
 		}
-	
+
 		/** The result of executing an external command. */
 		public class Status
 		{
 			/** The external command's exit code. */
 			private int _code;
-			public int Code 
-			{ 
+			public int Code
+			{
 				get { return _code; }
 				set { _code = value; }
 			}
 
 			/** The external command's screen output (stdout AND stderr!). */
 			private string _text;
-			public string Text 
-			{ 
+			public string Text
+			{
 				get { return _text; }
 				set { _text = value; }
 			}
 		}
-	
+
 		/** An ad-hoc wrapper class that stores the state needed to execute an external command. */
 		private class Invokator
 		{
@@ -129,7 +129,7 @@ namespace Org.Nutbox.Build
 			{
 				get { return _code; }
 			}
-	
+
 			/** Whether or not to echo (display) the command's output on the screen WHILE it runs. */
 			private bool _echo;
 			public bool Echo
@@ -137,22 +137,22 @@ namespace Org.Nutbox.Build
 				get { return _echo; }
 				set { _echo = value; }
 			}
-	
+
 			/** The output of the external command. */
 			private System.Text.StringBuilder _text;
 			public string Text
 			{
 				get { return _text.ToString(); }
 			}
-	
+
 			/** Handy wrapper around the house-keeping necessary to launch a process.
-			 *  
+			 *
 			 *  In Python, it would have been invoked using this format:
-			 * 
+			 *
 			 *  	( status, output ) = Execute("foo.exe", "arg1 arg2")
-			 * 
+			 *
 			 *  But, alas, C# is nowhere as elegant as Python and/or Boo.
-			 * 
+			 *
 			 *  This method handles all the dirty details of asynchronously reading the standard error and standard input streams.
 			 */
 			public void Execute(string command, string arguments)
@@ -166,21 +166,21 @@ namespace Org.Nutbox.Build
 				process.StartInfo.RedirectStandardOutput = true;
 				process.OutputDataReceived += new DataReceivedEventHandler(OutputHandler);
 				process.ErrorDataReceived += new DataReceivedEventHandler(OutputHandler);
-	
+
 				// initialize the instance (todo: clean up interface (echo arg))
 				_code = 0;
 				// _echo is set up by the caller (defaults to false)
 				_text = new System.Text.StringBuilder("");
-	
+
 				// try starting the process
 				try
 				{
 					process.Start();
-	
+
 					// begin asynchronously reading stdout and stderr
 					process.BeginOutputReadLine();
 					process.BeginErrorReadLine();
-	
+
 					// wait for the process to exit, then query its exit code
 					process.WaitForExit();
 					_code = process.ExitCode;
@@ -190,52 +190,52 @@ namespace Org.Nutbox.Build
 					// clean up no matter what happens
 					process.Close();
 				}
-	
+
 				// the instance can now be queried to determine the result
 			}
-	
-			/** Callback that is invoked whenever the external command outputs data to stdout and/or stderr. */	
+
+			/** Callback that is invoked whenever the external command outputs data to stdout and/or stderr. */
 			private void OutputHandler(object sender, DataReceivedEventArgs args)
 			{
 				if (args.Data == null)
 					return;
-	
+
 				if (_text.Length != 0)
 					_text.Append(System.Environment.NewLine);
 				_text.Append(args.Data);
-	
+
 				if (_echo)
 					System.Console.WriteLine(args.Data);
 			}
-	
+
 			/** Here used to be an Execute(string, List<string>) variant, but FxCop v1.36 whines and threatens to tell M$ that a
 			 *  generic list is being used in a publicly visible interface.
 			 */
 		}
-	
-		/** Executes the specified command with the specified arguments, echoing if \c echo is true. */	
+
+		/** Executes the specified command with the specified arguments, echoing if \c echo is true. */
 		public static Status Execute(string command, string arguments, bool echo)
 		{
 			// create, initialize and use Invokator instance
 			Invokator invokator = new Invokator();
 			invokator.Echo = echo;
 			invokator.Execute(command, arguments);
-	
+
 			// query the instance for the result
 			Status result = new Status();
 			result.Code = invokator.Code;
 			result.Text = invokator.Text;
-	
+
 			return result;
 		}
-	
-		/** Executes the specified command with the specified arguments, echoing if \c echo is true. */	
+
+		/** Executes the specified command with the specified arguments, echoing if \c echo is true. */
 		public static Status Execute(string command, string[] arguments, bool echo)
 		{
 			return Execute(command, JoinCommandLine(arguments), echo);
 		}
-	
-		/** Executes the specified command, after splitting it into executable and arguments, echoing if \c echo is true. */	
+
+		/** Executes the specified command, after splitting it into executable and arguments, echoing if \c echo is true. */
 		public static Status Execute(string cmdline, bool echo)
 		{
 			int pos = cmdline.IndexOf(' ');
@@ -412,18 +412,18 @@ namespace Org.Nutbox.Build
 							throw new BuildError("Missing parameter in option: " + arg);
 						switch (data.ToUpperInvariant())
 						{
-							case ".NET": 
-								_platform = ".NET"; 
+							case ".NET":
+								_platform = ".NET";
 								_compiler = "csc.exe"; 	/** \note Won't work on Linux... */
 								break;
 
-							case "MONO": 
-								_platform = "Mono"; 
+							case "MONO":
+								_platform = "Mono";
 								_compiler = "mcs.bat";	/** \note Won't work on Linux, but must be used this way on Windoze. */
 								break;
 
-							case "DOTGNU": 
-								_platform = "dotGNU"; 
+							case "DOTGNU":
+								_platform = "dotGNU";
 								_compiler = "unknown";
 								break;
 
@@ -540,7 +540,7 @@ namespace Org.Nutbox.Build
 		}
 
 		/** Compile the specified target (basename) from the source files in the home path.
-		 * 
+		 *
 		 *  The target is linked with the specified assemblies and the specified setup is used.
 		 */
 		public static void Compile(string basename, string homepath, string[] assemblies, Setup setup)
@@ -656,8 +656,8 @@ namespace Org.Nutbox.Build
 			try
 			{
 				// tell the world who's running the show
-				System.Console.WriteLine("Nutbox.build v0.06/.NET v2.0+ - http://www.nutbox.org");
-				System.Console.WriteLine("Copyright (C) 2009-2012 Mikael Lyngvig.  All rights reserved.");
+				System.Console.WriteLine("Nutbox.build v0.07 - http://nutbox.lyngvig.org");
+				System.Console.WriteLine("Copyright (C) 2009-2015 Mikael Lyngvig.  Donated to the Public Domain.");
 				System.Console.WriteLine();
 
 				// parse and check command-line parameters
@@ -696,7 +696,7 @@ namespace Org.Nutbox.Build
 					string source = program + '/' + program + ".hlp";
 					string target = program + '/' + program + ".hlp.cs";
 					if (setup.Clean || !System.IO.File.Exists(target) || FileDate(source) > FileDate(target))
-					{	
+					{
 						string[] arguments = new string[]
 						{
 							"--format:string",
@@ -726,7 +726,7 @@ namespace Org.Nutbox.Build
 				// build documentation in ../obj/doc/html.
 				if (setup.Documentation)
 				{
-					string helpdir = "../obj/doxygen/html";
+					string helpdir = "../obj/docs";
 					System.Console.WriteLine("Building: {0}", helpdir);
 					if (System.IO.Directory.Exists(helpdir))
 						System.IO.Directory.Delete(helpdir, true);

@@ -173,6 +173,7 @@ namespace Org.Nutbox.Fileedit
 					}
 
 					// let .NET handle encoding and all that
+                    /** \todo Fix the problem that .NET does \b not select the optimal output encoding, but rather uses ASCII! */
 					System.IO.File.WriteAllText(file, target);
 				}
 			}

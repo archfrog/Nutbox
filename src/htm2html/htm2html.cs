@@ -27,7 +27,7 @@
 // Apple Safari and Opera), for which reason you should probably use it.
 //****************************************************************************
 
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.htm2html")]
@@ -43,9 +43,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Htm2html
+namespace Org.Lyngvig.Nutbox.Htm2html
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		private StringValue _source = new StringValue(null);
 		public string Source
@@ -80,18 +80,18 @@ namespace Org.Nutbox.Htm2html
 
     // Program:
     // The program class that contains all the actual program code.
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"htm2html",						// Program
 			"v1.10",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Htm2html.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Htm2html.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -125,7 +125,7 @@ namespace Org.Nutbox.Htm2html
 			System.IO.File.WriteAllText(target_name, source_data, target_encoding);
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
@@ -144,7 +144,7 @@ namespace Org.Nutbox.Htm2html
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

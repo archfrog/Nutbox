@@ -21,7 +21,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Org.Nutbox
+namespace Org.Lyngvig.Nutbox
 {
     // DirList:
     // A hashtable containing disk information (DiskInfo) for all the items in

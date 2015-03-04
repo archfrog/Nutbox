@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// List<T>
-using Org.Nutbox.Options;			// ListValue()
+using Org.Lyngvig.Nutbox.Options;			// ListValue()
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.wc")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Wc
+namespace Org.Lyngvig.Nutbox.Wc
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		public const int CHARS  = 1;
 		public const int LINES  = 2;
@@ -91,7 +91,7 @@ namespace Org.Nutbox.Wc
 			Option[] options =
 			{
 				// note: This is an interesting case of old meets new: The
-				// note: Org.Nutbox.Options module is NOT intended to handle bitwise
+				// note: Org.Lyngvig.Nutbox.Options module is NOT intended to handle bitwise
 				// note: options (options that contribute to the same bitfield),
 				// note: but that's how GNU WC works.  So we bridge the gap
 				// note: between the two using the special DelegateOption class.
@@ -113,18 +113,18 @@ namespace Org.Nutbox.Wc
 		}
     }
 
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"wc",							// Program
 			"v1.01",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Wc.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Wc.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -228,7 +228,7 @@ namespace Org.Nutbox.Wc
 		public static void Print(string filename, Counts value, int bits)
 		{
 			if (bits == 0)
-				throw new Org.Nutbox.InternalError("Bitfield must be non-zero");
+				throw new Org.Lyngvig.Nutbox.InternalError("Bitfield must be non-zero");
 
 			if ((bits & Setup.LINES) != 0)
 				System.Console.Write("{0,7}", value.Lines);
@@ -241,7 +241,7 @@ namespace Org.Nutbox.Wc
 			System.Console.WriteLine(" {0}", filename);
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
@@ -262,7 +262,7 @@ namespace Org.Nutbox.Wc
 
 			// handle the case of multiple input files
 			// ... expand wildcards
-			string[] files = Org.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
+			string[] files = Org.Lyngvig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
 
 			// report the stats of each file to the standard output device
 			Counts total = new Counts();
@@ -286,7 +286,7 @@ namespace Org.Nutbox.Wc
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

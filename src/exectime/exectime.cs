@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.exectime")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Exectime
+namespace Org.Lyngvig.Nutbox.Exectime
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private StringValue _command = new StringValue(null);
 		public string Command
@@ -70,18 +70,18 @@ namespace Org.Nutbox.Exectime
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"exectime",						// Program
 			"v1.10",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Exectime.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Exectime.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -89,7 +89,7 @@ namespace Org.Nutbox.Exectime
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -97,7 +97,7 @@ namespace Org.Nutbox.Exectime
 			System.DateTime first = System.DateTime.Now;
 
 			// launch the command (ignore the return value from Execute())
-			Org.Nutbox.Platform.Process.Execute(setup.Command,	setup.Arguments, !setup.Quiet);
+			Org.Lyngvig.Nutbox.Platform.Process.Execute(setup.Command,	setup.Arguments, !setup.Quiet);
 
 			// ... query the execution time prior to dumping the output
 			System.DateTime other = System.DateTime.Now;
@@ -111,7 +111,7 @@ namespace Org.Nutbox.Exectime
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

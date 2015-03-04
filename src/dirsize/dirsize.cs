@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// List<string>
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.dirsize")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Dirsize
+namespace Org.Lyngvig.Nutbox.Dirsize
 {
-	public class Setup: Org.Nutbox.Setup
+	public class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private ListValue _wildcards = new ListValue();
 		public string[] Wildcards
@@ -55,18 +55,18 @@ namespace Org.Nutbox.Dirsize
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"dirsize",						// Program
 			"v1.01",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights, 	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Dirsize.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights, 	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Dirsize.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -83,18 +83,18 @@ namespace Org.Nutbox.Dirsize
 			System.Console.WriteLine("{0,12} MB   {1}", text, name);
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
 			// expand wildcards and check that each directory exists
-			string[] found = Org.Nutbox.Platform.Directory.Find(setup.Wildcards, false);
+			string[] found = Org.Lyngvig.Nutbox.Platform.Directory.Find(setup.Wildcards, false);
 
 			// show size of each directory specified
 			long sum = 0;
 			foreach (string directory in found)
 			{
-				long size = Org.Nutbox.Platform.Directory.Size(directory);
+				long size = Org.Lyngvig.Nutbox.Platform.Directory.Size(directory);
 				sum += size;
 				Show(directory, size);
 			}
@@ -108,7 +108,7 @@ namespace Org.Nutbox.Dirsize
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

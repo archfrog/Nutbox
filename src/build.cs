@@ -40,7 +40,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Org.Nutbox.Build
+namespace Org.Lyngvig.Nutbox.Build
 {
 	public class Environment
 	{
@@ -692,7 +692,7 @@ namespace Org.Nutbox.Build
 						continue;
 
 					// create or update the .hlp.cs file if, applicable
-					string helppath = "Org.Nutbox." + MixedCase(program) + ".Help.Text";
+					string helppath = "Org.Lyngvig.Nutbox." + MixedCase(program) + ".Help.Text";
 					string source = program + '/' + program + ".hlp";
 					string target = program + '/' + program + ".hlp.cs";
 					if (setup.Clean || !System.IO.File.Exists(target) || FileDate(source) > FileDate(target))

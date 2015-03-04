@@ -33,25 +33,25 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Clear
+namespace Org.Lyngvig.Nutbox.Clear
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		// no parameters and no options, so nothing to do.
     }
 
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"clear",						// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Clear.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Clear.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -70,7 +70,7 @@ namespace Org.Nutbox.Clear
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

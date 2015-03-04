@@ -21,7 +21,7 @@
 using System;
 using System.IO;
 
-namespace Org.Nutbox
+namespace Org.Lyngvig.Nutbox
 {
     // DiskItem:
     // Contains the information we want to compare about each disk item (a file or a directory)

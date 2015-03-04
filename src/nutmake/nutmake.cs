@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// Dictionary<T1, T2>
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.nutmake")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Nutmake
+namespace Org.Lyngvig.Nutbox.Nutmake
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		protected ListValue _arguments = new ListValue();
 		public List<string> Arguments
@@ -111,7 +111,7 @@ namespace Org.Nutbox.Nutmake
 			string name = arg.Substring(index);
 			string value = System.Environment.GetEnvironmentVariable(name);
 			if (value == null)
-				throw new Org.Nutbox.Exception("Environment variable does not exist: " + name);
+				throw new Org.Lyngvig.Nutbox.Exception("Environment variable does not exist: " + name);
 			_symbols[name] = value;
 			return arg.Length;
 		}
@@ -152,18 +152,18 @@ namespace Org.Nutbox.Nutmake
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"nutmake",						// Program
 			"v0.03",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Nutmake.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Nutmake.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -171,7 +171,7 @@ namespace Org.Nutbox.Nutmake
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -186,7 +186,7 @@ namespace Org.Nutbox.Nutmake
 					string data = arg.Substring(pos + 1);
 
 					if (name.Length == 0)
-						throw new Org.Nutbox.Exception("Malformed symbol definition: " + arg);
+						throw new Org.Lyngvig.Nutbox.Exception("Malformed symbol definition: " + arg);
 
 					setup.Symbols[name] = data.Trim();
 				}
@@ -209,7 +209,7 @@ namespace Org.Nutbox.Nutmake
 
 			// check that the loader found at least one goal
 			if (makefile.Goal == null)
-				throw new Org.Nutbox.Exception("Empty makefile");
+				throw new Org.Lyngvig.Nutbox.Exception("Empty makefile");
 
 			// if no explicit goal is given, use the 'first' goal
 			if (setup.Goals.Count == 0)
@@ -225,7 +225,7 @@ namespace Org.Nutbox.Nutmake
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}
@@ -338,13 +338,13 @@ namespace Org.Nutbox.Nutmake
 		public static int ParseName(string line, int index, out string value)
 		{
 			if (index == line.Length)
-				throw new Org.Nutbox.Exception("Unexpected end of line");
+				throw new Org.Lyngvig.Nutbox.Exception("Unexpected end of line");
 
 			string name = "";
 			do
 			{
 				if (!IsSymbolChar(line[index]))
-					throw new Org.Nutbox.Exception("Name expected");
+					throw new Org.Lyngvig.Nutbox.Exception("Name expected");
 				name  += line[index];
 				index += 1;
 			} while (index < line.Length && IsSymbolChar(line[index]));
@@ -359,7 +359,7 @@ namespace Org.Nutbox.Nutmake
 		public static int ParseCommand(string line, int index, out string value)
 		{
 			if (index == line.Length)
-				throw new Org.Nutbox.Exception("Unexpected end of line");
+				throw new Org.Lyngvig.Nutbox.Exception("Unexpected end of line");
 
 			switch (line[index])
 			{
@@ -371,7 +371,7 @@ namespace Org.Nutbox.Nutmake
 				case '?':
 					index += 1;
 					if (index == line.Length || line[index] != '=')
-						throw new Org.Nutbox.Exception("Unexpected end of command");
+						throw new Org.Lyngvig.Nutbox.Exception("Unexpected end of command");
 					index += 1;
 					value = "?=";
 					break;
@@ -379,7 +379,7 @@ namespace Org.Nutbox.Nutmake
 				case '+':
 					index += 1;
 					if (index == line.Length || line[index] != '=')
-						throw new Org.Nutbox.Exception("Unexpected end of command");
+						throw new Org.Lyngvig.Nutbox.Exception("Unexpected end of command");
 					index += 1;
 					value = "+=";
 					break;
@@ -390,7 +390,7 @@ namespace Org.Nutbox.Nutmake
 					break;
 
 				default :
-					throw new Org.Nutbox.Exception("Unknown or missing command: " + line.Substring(index));
+					throw new Org.Lyngvig.Nutbox.Exception("Unknown or missing command: " + line.Substring(index));
 			}
 
 			return index;
@@ -446,11 +446,11 @@ namespace Org.Nutbox.Nutmake
 						indent += 1;
 					}
 					if (indent > 1)
-						throw new Org.Nutbox.Exception("Too much indentation detected");
+						throw new Org.Lyngvig.Nutbox.Exception("Too much indentation detected");
 
 					// barf on leading spaces
 					if (line.Length > 0 && line[0] == ' ')
-						throw new Org.Nutbox.Exception(name + "(" + number.ToString() + ") Error: Leading space detected");
+						throw new Org.Lyngvig.Nutbox.Exception(name + "(" + number.ToString() + ") Error: Leading space detected");
 
 					// truncate comment lines
 					if (line.IndexOf('#') != -1)
@@ -460,7 +460,7 @@ namespace Org.Nutbox.Nutmake
 					line = line.TrimEnd();
 
 					// expand macros
-					line = Org.Nutbox.Platform.Shell.ExpandMacros(line, symbols);
+					line = Org.Lyngvig.Nutbox.Platform.Shell.ExpandMacros(line, symbols);
 
 					// delete extranous space on this construction:
 					// $(EMPTY) foo bar
@@ -498,7 +498,7 @@ namespace Org.Nutbox.Nutmake
 								// addition, require the symbol to exist already
 								case "+=":
 									if (!symbols.ContainsKey(symbol))
-										throw new Org.Nutbox.Exception("Unknown macro: " + symbol);
+										throw new Org.Lyngvig.Nutbox.Exception("Unknown macro: " + symbol);
 									if (symbols[symbol].Length > 0)
 										symbols[symbol] += ' ';
 									symbols[symbol] += argument;
@@ -513,7 +513,7 @@ namespace Org.Nutbox.Nutmake
 								// a target, add it to the dictionary of targets
 								case ":":	// a target
 									if (targets.ContainsKey(symbol))
-										throw new Org.Nutbox.Exception("Target already defined: " + symbol);
+										throw new Org.Lyngvig.Nutbox.Exception("Target already defined: " + symbol);
 									string[] deps;
 									if (argument.Length == 0)
 										deps = new string[0];
@@ -528,7 +528,7 @@ namespace Org.Nutbox.Nutmake
 									break;
 
 								default:
-									throw new Org.Nutbox.Exception("Internal error - unknown command");
+									throw new Org.Lyngvig.Nutbox.Exception("Internal error - unknown command");
 							}
 							break;
 						}
@@ -537,11 +537,11 @@ namespace Org.Nutbox.Nutmake
 						case 1:
 						{
 							if (target == null)
-								throw new Org.Nutbox.Exception("Command outside of rule");
+								throw new Org.Lyngvig.Nutbox.Exception("Command outside of rule");
 							if (line.Length == 0)
-								throw new Org.Nutbox.Exception("Empty command detected");
+								throw new Org.Lyngvig.Nutbox.Exception("Empty command detected");
 							if (indent != 1)
-								throw new Org.Nutbox.Exception("Incorrect indentation (one tab stop expected)");
+								throw new Org.Lyngvig.Nutbox.Exception("Incorrect indentation (one tab stop expected)");
 							if (target.Commands.Length > 0)
 								target.Commands += '\n';
 							target.Commands += line;
@@ -549,14 +549,14 @@ namespace Org.Nutbox.Nutmake
 						}
 
 						default:
-							throw new Org.Nutbox.Exception("Invalid parser state");
+							throw new Org.Lyngvig.Nutbox.Exception("Invalid parser state");
 					}
 				}
-				catch (Org.Nutbox.Exception that)
+				catch (Org.Lyngvig.Nutbox.Exception that)
 				{
 					// repackage the exception with file and line number info
-					// added so that Org.Nutbox.Program can report a proper error
-					throw new Org.Nutbox.TextFileException(name, number, index, that.Message);
+					// added so that Org.Lyngvig.Nutbox.Program can report a proper error
+					throw new Org.Lyngvig.Nutbox.TextFileException(name, number, index, that.Message);
 				}
 			} while (!done);
 		}
@@ -568,7 +568,7 @@ namespace Org.Nutbox.Nutmake
 		{
 			// check that the goal is defined in the Makefile
 			if (!targets.ContainsKey(goal))
-				throw new Org.Nutbox.Exception("Unknown target: " + goal);
+				throw new Org.Lyngvig.Nutbox.Exception("Unknown target: " + goal);
 			Target target = targets[goal];
 
 			// make each dependency prior to checking if the target is up-to-date
@@ -577,8 +577,8 @@ namespace Org.Nutbox.Nutmake
 				// invoke ourselves recursively to make non-existent deps
 				if (targets.ContainsKey(dep))
 					Make(dep);
-				else if (!Org.Nutbox.Platform.Disk.Exists(dep))
-					throw new Org.Nutbox.Exception("Unknown target: " + dep);
+				else if (!Org.Lyngvig.Nutbox.Platform.Disk.Exists(dep))
+					throw new Org.Lyngvig.Nutbox.Exception("Unknown target: " + dep);
 			}
 
 			// check if the target is up-to-date or outdated
@@ -587,14 +587,14 @@ namespace Org.Nutbox.Nutmake
 			// handle the -all option
 			outdated |= All;
 
-			if (!outdated && !Org.Nutbox.Platform.Disk.Exists(goal))
+			if (!outdated && !Org.Lyngvig.Nutbox.Platform.Disk.Exists(goal))
 				outdated = true;
 
 			// check if one or more dependencies are newer
 			if (!outdated)
 			{
 				// get the modified time of the goal object
-				System.DateTime goaltime = Org.Nutbox.Platform.Disk.GetLastWriteTimeUtc(goal);
+				System.DateTime goaltime = Org.Lyngvig.Nutbox.Platform.Disk.GetLastWriteTimeUtc(goal);
 
 				// iterate through each dependency and see if it is newer than
 				// the goal.
@@ -603,9 +603,9 @@ namespace Org.Nutbox.Nutmake
 					System.DateTime deptime;
 
 					// sanity check: was the target really created?
-					if (!_continue && !Org.Nutbox.Platform.Disk.Exists(dep))
-						throw new Org.Nutbox.Exception("Target updated but non-existent?!");
-					deptime = Org.Nutbox.Platform.Disk.GetLastWriteTimeUtc(dep);
+					if (!_continue && !Org.Lyngvig.Nutbox.Platform.Disk.Exists(dep))
+						throw new Org.Lyngvig.Nutbox.Exception("Target updated but non-existent?!");
+					deptime = Org.Lyngvig.Nutbox.Platform.Disk.GetLastWriteTimeUtc(dep);
 
 					// the core of any make tool: the two magical lines...
 					if (deptime > goaltime)
@@ -629,7 +629,7 @@ namespace Org.Nutbox.Nutmake
 		{
 			// in case this public method is invoked by a client
 			if (!targets.ContainsKey(goal))
-				throw new Org.Nutbox.Exception("Unknown target: " + goal);
+				throw new Org.Lyngvig.Nutbox.Exception("Unknown target: " + goal);
 			Target target = targets[goal];
 
 			// let the user know what we're about to do
@@ -652,12 +652,12 @@ namespace Org.Nutbox.Nutmake
 				if (_test)
 					continue;
 
-				Org.Nutbox.Platform.Process.Status status;
-				status = Org.Nutbox.Platform.Process.Execute(command, _verbose);
+				Org.Lyngvig.Nutbox.Platform.Process.Status status;
+				status = Org.Lyngvig.Nutbox.Platform.Process.Execute(command, _verbose);
 				if (status.Code != 0)
 				{
 					if (!_ignore)
-						throw new Org.Nutbox.Exception("Error invoking command: " + command);
+						throw new Org.Lyngvig.Nutbox.Exception("Error invoking command: " + command);
 					if (_verbose)
 						System.Console.WriteLine("Warning: Error '" + status.Code + "' during execution of last command");
 				}

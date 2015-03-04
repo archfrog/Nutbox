@@ -58,7 +58,7 @@
 // array.
 //*****************************************************************************
 
-namespace Org.Nutbox.Options
+namespace Org.Lyngvig.Nutbox.Options
 {
 	using System.Collections.Generic;	// Dictionary<T1, T2>
 

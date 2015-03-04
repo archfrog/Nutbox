@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// List<T>
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.head")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Head
+namespace Org.Lyngvig.Nutbox.Head
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		private StringValue mFilename = new StringValue(null);
 		public string Filename			// null => read from standard input
@@ -66,18 +66,18 @@ namespace Org.Nutbox.Head
 
     // Program:
     // The program class that contains all the actual program code.
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"head",							// Program
 			"v1.01",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Head.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Head.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -85,14 +85,14 @@ namespace Org.Nutbox.Head
 		{
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
 			// parse the Lines option parameter (defaults to ten)
 			int count = setup.Lines;
 			if (count < 1)
-				throw new Org.Nutbox.Exception("Invalid option parameter: -lines:" + setup.Lines);
+				throw new Org.Lyngvig.Nutbox.Exception("Invalid option parameter: -lines:" + setup.Lines);
 
 			// set up the input stream
 			System.IO.TextReader source;
@@ -129,7 +129,7 @@ namespace Org.Nutbox.Head
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

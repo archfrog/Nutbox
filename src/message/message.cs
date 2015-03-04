@@ -20,7 +20,7 @@
 
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.message")]
@@ -36,9 +36,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Message
+namespace Org.Lyngvig.Nutbox.Message
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private StringValue _title = new StringValue("");
 		public string Title
@@ -64,18 +64,18 @@ namespace Org.Nutbox.Message
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"message",	   					// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Message.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Message.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -83,7 +83,7 @@ namespace Org.Nutbox.Message
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -110,7 +110,7 @@ namespace Org.Nutbox.Message
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

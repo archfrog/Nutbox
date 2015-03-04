@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// List<string>
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.trim")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Trim
+namespace Org.Lyngvig.Nutbox.Trim
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		private ListValue mWildcards = new ListValue();
 		public string[] Wildcards
@@ -64,18 +64,18 @@ namespace Org.Nutbox.Trim
 		}
     }
 
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"trim",							// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Trim.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Trim.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -83,18 +83,18 @@ namespace Org.Nutbox.Trim
 		{
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
 			// expand wildcards
-			string[] files = Org.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
+			string[] files = Org.Lyngvig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
 
 			// check that each specified and found file actually exists
 			foreach (string file in files)
 			{
 				if (!System.IO.File.Exists(file))
-					throw new Org.Nutbox.Exception("File not found: " + file);
+					throw new Org.Lyngvig.Nutbox.Exception("File not found: " + file);
 			}
 
 			// iterate over each file and trim it
@@ -154,7 +154,7 @@ namespace Org.Nutbox.Trim
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

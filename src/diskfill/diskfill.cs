@@ -18,7 +18,7 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.diskfill")]
@@ -34,7 +34,7 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Diskfill
+namespace Org.Lyngvig.Nutbox.Diskfill
 {
 	class Setup: Nutbox.Setup
 	{
@@ -70,20 +70,20 @@ namespace Org.Nutbox.Diskfill
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
 		const int BLOCKSIZE = 65536;
 
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"diskfill",						// Program
 			"v1.11",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Diskfill.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Diskfill.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -91,7 +91,7 @@ namespace Org.Nutbox.Diskfill
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -99,7 +99,7 @@ namespace Org.Nutbox.Diskfill
 			if (target.Length > 0 && target[target.Length - 1] != System.IO.Path.DirectorySeparatorChar)
 				target += System.IO.Path.DirectorySeparatorChar;
 			if (target.Length < 2 || target[1] != ':')
-				throw new Org.Nutbox.Exception("Unable to determine drive: " + setup.Target);
+				throw new Org.Lyngvig.Nutbox.Exception("Unable to determine drive: " + setup.Target);
 			target += "diskfill.dat";
 			string drive = target.Substring(0, 1);
 
@@ -157,7 +157,7 @@ namespace Org.Nutbox.Diskfill
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

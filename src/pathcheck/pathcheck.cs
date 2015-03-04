@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// Dictionary<string, string[]>
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.pathcheck")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Pathcheck
+namespace Org.Lyngvig.Nutbox.Pathcheck
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		private BooleanValue mElaborate = new BooleanValue(false);
 		public bool Elaborate			// true => perform an elaborate check
@@ -66,18 +66,18 @@ namespace Org.Nutbox.Pathcheck
 		}
     }
 
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"pathcheck",					// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Pathcheck.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Pathcheck.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -85,14 +85,14 @@ namespace Org.Nutbox.Pathcheck
 		{
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
 			// this is what it is all about
 			string value = System.Environment.GetEnvironmentVariable(setup.Variable);
 			if (value == null)
-				throw new Org.Nutbox.Exception("Environment variable not found: " + setup.Variable);
+				throw new Org.Lyngvig.Nutbox.Exception("Environment variable not found: " + setup.Variable);
 
 			// this is our dictionary of names in already processed directories
 			// each key is the name of a file found in the path/variable
@@ -181,7 +181,7 @@ namespace Org.Nutbox.Pathcheck
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

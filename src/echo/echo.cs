@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// List<T>
-using Org.Nutbox.Options;			// ListValue()
+using Org.Lyngvig.Nutbox.Options;			// ListValue()
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.echo")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Echo
+namespace Org.Lyngvig.Nutbox.Echo
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		private BooleanValue mEscapes = new BooleanValue(false);
 		public bool Escapes
@@ -70,18 +70,18 @@ namespace Org.Nutbox.Echo
 		}
     }
 
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"echo",							// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Echo.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Echo.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -103,7 +103,7 @@ namespace Org.Nutbox.Echo
 			return result;
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
@@ -157,7 +157,7 @@ namespace Org.Nutbox.Echo
 					case 'v': output = '\v'; break;
 
 					case 'x':
-						throw new Org.Nutbox.InternalError("Unsupported feature: \\x");
+						throw new Org.Lyngvig.Nutbox.InternalError("Unsupported feature: \\x");
 
 					case '0': goto case '9';
 					case '1': goto case '9';
@@ -169,7 +169,7 @@ namespace Org.Nutbox.Echo
 					case '7': goto case '9';
 					case '8': goto case '9';
 					case '9':
-    					throw new Org.Nutbox.InternalError("Unsupported feature: Octal escape");
+    					throw new Org.Lyngvig.Nutbox.InternalError("Unsupported feature: Octal escape");
 				}
 				System.Console.Write(output);
 			}
@@ -183,7 +183,7 @@ namespace Org.Nutbox.Echo
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

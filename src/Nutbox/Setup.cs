@@ -35,7 +35,7 @@
 //        but this would mean that constructs such as "rm --f -r" were valid.
 //****************************************************************************
 
-namespace Org.Nutbox
+namespace Org.Lyngvig.Nutbox
 {
 	// ParseResult:
 	// Used by the ParseXxx() methods to indicate the result of the operation.

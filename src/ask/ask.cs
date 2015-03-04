@@ -20,7 +20,7 @@
 
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.ask")]
@@ -36,9 +36,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Ask
+namespace Org.Lyngvig.Nutbox.Ask
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private StringValue _title = new StringValue("");
 		public string Title
@@ -72,18 +72,18 @@ namespace Org.Nutbox.Ask
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"ask",	   						// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Ask.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Ask.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -121,14 +121,14 @@ namespace Org.Nutbox.Ask
 			{
 				case DialogResult.OK:
 				case DialogResult.Yes:
-					throw new Org.Nutbox.ExitWithExitCode(100);
+					throw new Org.Lyngvig.Nutbox.ExitWithExitCode(100);
 
 				case DialogResult.Cancel:
 				case DialogResult.No:
-					throw new Org.Nutbox.ExitWithExitCode(101);
+					throw new Org.Lyngvig.Nutbox.ExitWithExitCode(101);
 
 				default:
-					throw new Org.Nutbox.InternalError("Unexpected result");
+					throw new Org.Lyngvig.Nutbox.InternalError("Unexpected result");
 			}
 		}
 
@@ -137,7 +137,7 @@ namespace Org.Nutbox.Ask
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

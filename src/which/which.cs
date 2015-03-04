@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.which")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Which
+namespace Org.Lyngvig.Nutbox.Which
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private BooleanValue mAll = new BooleanValue(false);
 		public bool All
@@ -73,18 +73,18 @@ namespace Org.Nutbox.Which
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"which",						// Program
 			"v1.02",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Which.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Which.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -92,7 +92,7 @@ namespace Org.Nutbox.Which
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -102,12 +102,12 @@ namespace Org.Nutbox.Which
 				// look up the environment variable and split it into its parts
 				string   path = System.Environment.GetEnvironmentVariable(setup.Variable);
 				if (path == null)
-					throw new Org.Nutbox.Exception("Undefined environment variable: " + setup.Variable);
+					throw new Org.Lyngvig.Nutbox.Exception("Undefined environment variable: " + setup.Variable);
 				string[] dirs = path.Split(System.IO.Path.PathSeparator);
 
-				string[] locations = Org.Nutbox.Platform.File.Locate(dirs, name);
+				string[] locations = Org.Lyngvig.Nutbox.Platform.File.Locate(dirs, name);
 				if (locations.Length == 0)
-					throw new Org.Nutbox.Exception("Unable to locate: " + name);
+					throw new Org.Lyngvig.Nutbox.Exception("Unable to locate: " + name);
 
 				// report all the found locations
 				if (setup.All)
@@ -127,7 +127,7 @@ namespace Org.Nutbox.Which
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

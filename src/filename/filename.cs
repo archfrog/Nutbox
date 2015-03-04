@@ -18,7 +18,7 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.filename")]
@@ -34,9 +34,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Filename
+namespace Org.Lyngvig.Nutbox.Filename
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private StringValue _command = new StringValue(null);
 		public string Command
@@ -61,18 +61,18 @@ namespace Org.Nutbox.Filename
 		}
 	}
 
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"filename",					   	// Program
 			"v1.02",					   	// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,    // Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Filename.Help.Text,	// HelpText
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,    // Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Filename.Help.Text,	// HelpText
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -113,7 +113,7 @@ namespace Org.Nutbox.Filename
 				{
 					string fullpath = System.IO.Path.GetFullPath(setup.Path);
 					if (fullpath.Length < 2 || fullpath[1] != ':')
-						throw new Org.Nutbox.Exception("Unable to determine disk name: " + setup.Path);
+						throw new Org.Lyngvig.Nutbox.Exception("Unable to determine disk name: " + setup.Path);
 					result = fullpath.Substring(0, 1).ToUpperInvariant();
 					break;
 				}
@@ -127,7 +127,7 @@ namespace Org.Nutbox.Filename
 				}
 
 				case "NORMALIZE":
-					result = Org.Nutbox.Platform.Disk.Normalize(setup.Path);
+					result = Org.Lyngvig.Nutbox.Platform.Disk.Normalize(setup.Path);
 					break;
 
 				case "EXTENSION":
@@ -137,7 +137,7 @@ namespace Org.Nutbox.Filename
 					break;
 
 				default:
-					throw new Org.Nutbox.Exception("Unknown command: " + setup.Command);
+					throw new Org.Lyngvig.Nutbox.Exception("Unknown command: " + setup.Command);
 			}
 
 			// output the result
@@ -149,7 +149,7 @@ namespace Org.Nutbox.Filename
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

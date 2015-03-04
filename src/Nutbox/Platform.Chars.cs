@@ -25,7 +25,7 @@
 // POSIX-style behavior.  And I haven't figured out how to do it with .NET.
 // Most likely, this is my fault and I am to blame (naughty boy!).
 
-namespace Org.Nutbox.Platform
+namespace Org.Lyngvig.Nutbox.Platform
 {
 	public sealed class Chars
 	{

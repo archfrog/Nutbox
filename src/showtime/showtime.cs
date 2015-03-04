@@ -18,7 +18,7 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.showtime")]
@@ -34,9 +34,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Showtime
+namespace Org.Lyngvig.Nutbox.Showtime
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private StringValue mTime = new StringValue(null);
 		public string Time
@@ -54,18 +54,18 @@ namespace Org.Nutbox.Showtime
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"showtime",						// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Showtime.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Showtime.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -73,7 +73,7 @@ namespace Org.Nutbox.Showtime
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -81,11 +81,11 @@ namespace Org.Nutbox.Showtime
 			System.DateTime time = new System.DateTime();
 			if (setup.Time == null)
 				time = System.DateTime.Now;
-			else if (!Org.Nutbox.Platform.Time.TryParse(setup.Time, out time))
-				throw new Org.Nutbox.Exception("Invalid time specified: " + setup.Time);
+			else if (!Org.Lyngvig.Nutbox.Platform.Time.TryParse(setup.Time, out time))
+				throw new Org.Lyngvig.Nutbox.Exception("Invalid time specified: " + setup.Time);
 
 			// output the result
-			System.Console.WriteLine("{0}", Org.Nutbox.Platform.Time.Standardize(time));
+			System.Console.WriteLine("{0}", Org.Lyngvig.Nutbox.Platform.Time.Standardize(time));
 		}
 
 		public static int Main(string[] args)
@@ -93,7 +93,7 @@ namespace Org.Nutbox.Showtime
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

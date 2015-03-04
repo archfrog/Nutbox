@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;	// List<T>
-using Org.Nutbox.Options;			// XxxValue(), XxxOption, XxxParameter()
+using Org.Lyngvig.Nutbox.Options;			// XxxValue(), XxxOption, XxxParameter()
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.mkdir")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Mkdir
+namespace Org.Lyngvig.Nutbox.Mkdir
 {
-	public class Setup: Org.Nutbox.Setup
+	public class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private ListValue _directories = new ListValue();
 		public List<string> Directories
@@ -63,18 +63,18 @@ namespace Org.Nutbox.Mkdir
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"mkdir",						// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights, 	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Mkdir.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights, 	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Mkdir.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -82,7 +82,7 @@ namespace Org.Nutbox.Mkdir
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
@@ -92,7 +92,7 @@ namespace Org.Nutbox.Mkdir
 				{
 					// if not creating parents, we must check if the parent exists
 					if (System.IO.Directory.Exists(directory))
-						throw new Org.Nutbox.Exception("Directory exists: " + directory);
+						throw new Org.Lyngvig.Nutbox.Exception("Directory exists: " + directory);
 
 					// build name of parent directory
 					string parent = directory;
@@ -102,7 +102,7 @@ namespace Org.Nutbox.Mkdir
 
 					// if the parent does not found, report an error
 					if (!System.IO.Directory.Exists(parent))
-						throw new Org.Nutbox.Exception("Cannot make directory: " + directory);
+						throw new Org.Lyngvig.Nutbox.Exception("Cannot make directory: " + directory);
 				}
 
 				// now let .NET create the all intermediates and the dir itself
@@ -115,7 +115,7 @@ namespace Org.Nutbox.Mkdir
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

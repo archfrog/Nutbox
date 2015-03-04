@@ -20,7 +20,7 @@
 
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.monowrap")]
@@ -36,9 +36,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Monowrap
+namespace Org.Lyngvig.Nutbox.Monowrap
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		private ListValue _wildcards = new ListValue();
 		public string[] Wildcards
@@ -88,18 +88,18 @@ namespace Org.Nutbox.Monowrap
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"monowrap",						// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Monowrap.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Monowrap.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -107,23 +107,23 @@ namespace Org.Nutbox.Monowrap
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 
 			// expand wildcards
-			string[] files = Org.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
+			string[] files = Org.Lyngvig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
 
 			// check that each specified and found file actually exists
 			foreach (string file in files)
 			{
 				// if not existing, throw an exception
 				if (!System.IO.File.Exists(file))
-					throw new Org.Nutbox.Exception("File not files: " + file);
+					throw new Org.Lyngvig.Nutbox.Exception("File not files: " + file);
 
 				// if not ending in ".exe", throw an exception
 				if (System.IO.Path.GetExtension(file) != ".exe")
-					throw new Org.Nutbox.Exception("Invalid file type: " + file);
+					throw new Org.Lyngvig.Nutbox.Exception("Invalid file type: " + file);
 			}
 
 			// search each file in the list of files to be searched
@@ -140,9 +140,9 @@ namespace Org.Nutbox.Monowrap
 				// generate the script file contents (two lines)
 				string text = "";
 				text += "#" + setup.Shell + "\n";
-				text += Org.Nutbox.Platform.Shell.Quote(setup.Monopath) +
+				text += Org.Lyngvig.Nutbox.Platform.Shell.Quote(setup.Monopath) +
 						" $MONO_OPTIONS " +
-						Org.Nutbox.Platform.Shell.Quote(absname) +
+						Org.Lyngvig.Nutbox.Platform.Shell.Quote(absname) +
 						" $*\n";
 
 				// write the script
@@ -155,10 +155,10 @@ namespace Org.Nutbox.Monowrap
 						"+x-w",
 						scriptname
 					};
-					Org.Nutbox.Platform.Process.Status status;
-					status = Org.Nutbox.Platform.Process.Execute("chmod", arguments, false);
+					Org.Lyngvig.Nutbox.Platform.Process.Status status;
+					status = Org.Lyngvig.Nutbox.Platform.Process.Execute("chmod", arguments, false);
 					if (status.Code != 0)
-						throw new Org.Nutbox.Exception("Unable to set attributes: " + scriptname);
+						throw new Org.Lyngvig.Nutbox.Exception("Unable to set attributes: " + scriptname);
 				}
 			}
 		}
@@ -168,7 +168,7 @@ namespace Org.Nutbox.Monowrap
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

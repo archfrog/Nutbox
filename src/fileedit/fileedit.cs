@@ -19,7 +19,7 @@
 #endregion
 
 using System.Collections.Generic;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.fileedit")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Fileedit
+namespace Org.Lyngvig.Nutbox.Fileedit
 {
-	class Setup: Org.Nutbox.Setup
+	class Setup: Org.Lyngvig.Nutbox.Setup
 	{
 		// note: due to the unusual syntax of the 'fileedit' command, we have
 		// note: to gather up all parameters (non-options) in _parameters and
@@ -87,18 +87,18 @@ namespace Org.Nutbox.Fileedit
 		}
 	}
 
-	class Program: Org.Nutbox.Program
+	class Program: Org.Lyngvig.Nutbox.Program
 	{
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"fileedit",						// Program
 			"v1.03",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Fileedit.Help.Text,	// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Fileedit.Help.Text,	// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -106,7 +106,7 @@ namespace Org.Nutbox.Fileedit
 		{
 		}
 
-		public override void Main(Org.Nutbox.Setup nutbox_setup)
+		public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
 		{
 			Setup setup = (Setup) nutbox_setup;
 			List<string> patterns = new List<string>();
@@ -121,7 +121,7 @@ namespace Org.Nutbox.Fileedit
 					int    pos = arg.IndexOf('=');
 					string old = arg.Substring(0, pos);
 					if (old.Length == 0)
-						throw new Org.Nutbox.Exception("Invalid pattern: " + arg);
+						throw new Org.Lyngvig.Nutbox.Exception("Invalid pattern: " + arg);
 
 					patterns.Add(arg);
 				}
@@ -130,13 +130,13 @@ namespace Org.Nutbox.Fileedit
 			}
 
 			// expand wildcards
-			string[] files = Org.Nutbox.Platform.File.Find(wildcards.ToArray(), setup.Recurse);
+			string[] files = Org.Lyngvig.Nutbox.Platform.File.Find(wildcards.ToArray(), setup.Recurse);
 
 			// check that each specified and files file actually exists
 			foreach (string file in files)
 			{
 				if (!System.IO.File.Exists(file))
-					throw new Org.Nutbox.Exception("File not files: " + file);
+					throw new Org.Lyngvig.Nutbox.Exception("File not files: " + file);
 			}
 
 			// search each file in the list of files to be searched
@@ -184,7 +184,7 @@ namespace Org.Nutbox.Fileedit
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

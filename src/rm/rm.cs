@@ -20,7 +20,7 @@
 
 using System;
 using System.Collections.Generic;
-using Org.Nutbox.Options;
+using Org.Lyngvig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.rm")]
@@ -36,9 +36,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Nutbox.Rm
+namespace Org.Lyngvig.Nutbox.Rm
 {
-    class Setup: Org.Nutbox.Setup
+    class Setup: Org.Lyngvig.Nutbox.Setup
     {
 		private ListValue mWildcards = new ListValue();
 		public List<string> Wildcards
@@ -76,18 +76,18 @@ namespace Org.Nutbox.Rm
 
     // Program:
     // The program class that contains all the actual program code.
-    class Program: Org.Nutbox.Program
+    class Program: Org.Lyngvig.Nutbox.Program
     {
-		static Org.Nutbox.Information _info = new Org.Nutbox.Information(
+		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
 			"rm",							// Program
 			"v1.00",						// Version
-			Org.Nutbox.Copyright.Company,	// Company
-			Org.Nutbox.Copyright.Rights,	// Rights
-			Org.Nutbox.Copyright.Support,	// Support
-            Org.Nutbox.Copyright.Website,   // Website
-			Org.Nutbox.Rm.Help.Text,		// Help
-			Org.Nutbox.Copyright.Lower,		// Lower
-			Org.Nutbox.Copyright.Upper		// Upper
+			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
+			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
+			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
+            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
+			Org.Lyngvig.Nutbox.Rm.Help.Text,		// Help
+			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
+			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -95,7 +95,7 @@ namespace Org.Nutbox.Rm
 		{
 		}
 
-        public override void Main(Org.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
@@ -111,9 +111,9 @@ namespace Org.Nutbox.Rm
 				}
 
 				// must be a file specification (rm does not do match on dirs)
-				string[] matches = Org.Nutbox.Platform.File.Find(wildcard, false);
+				string[] matches = Org.Lyngvig.Nutbox.Platform.File.Find(wildcard, false);
 				if (!setup.Force && matches.Length == 0)
-					throw new Org.Nutbox.Exception("No matching files found: " + wildcard);
+					throw new Org.Lyngvig.Nutbox.Exception("No matching files found: " + wildcard);
 
 				// add all matched items to the list of found items
 				foreach (string match in matches)
@@ -127,22 +127,22 @@ namespace Org.Nutbox.Rm
 				if (System.IO.Directory.Exists(item))
 				{
 					if (!setup.Recurse)
-						throw new Org.Nutbox.Exception("-recurse option not specified for directory: " + item);
+						throw new Org.Lyngvig.Nutbox.Exception("-recurse option not specified for directory: " + item);
 
-					Org.Nutbox.Platform.Directory.Delete(item, setup.Recurse, setup.Force);
+					Org.Lyngvig.Nutbox.Platform.Directory.Delete(item, setup.Recurse, setup.Force);
 					continue;
 				}
 
 				// if a file, remove it
 				if (System.IO.File.Exists(item))
 				{
-					Org.Nutbox.Platform.File.Delete(item, setup.Force);
+					Org.Lyngvig.Nutbox.Platform.File.Delete(item, setup.Force);
 					continue;
 				}
 
 				// non-existing item, report error if not -force
 				if (!setup.Force)
-					throw new Org.Nutbox.Exception("Item not found: " + item);
+					throw new Org.Lyngvig.Nutbox.Exception("Item not found: " + item);
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace Org.Nutbox.Rm
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

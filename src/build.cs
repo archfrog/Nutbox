@@ -289,7 +289,7 @@ namespace Org.Nutbox.Build
 		}
 
 		/** If true, Doxygen will be invoked to generate elaborate HTML documentation for the project. */
-		private bool _documentation = true;
+		private bool _documentation = false;
 		public bool Documentation
 		{
 			get { return _documentation; }
@@ -495,7 +495,7 @@ namespace Org.Nutbox.Build
 			System.Console.WriteLine("Options:");
 			System.Console.WriteLine("    -checked        Flip 'checked' flag (default: on).");
 			System.Console.WriteLine("    -clean          Build unconditionally without doing an implicit make.");
-			System.Console.WriteLine("    -doc|-nodoc     Enable or disable generation of docs (default: on).");
+			System.Console.WriteLine("    -doc|-nodoc     Enable or disable generation of docs (default: off).");
 			System.Console.WriteLine("    -logo           Flip 'logo' flag (default: off).");
 			System.Console.WriteLine("    -mode:name      Select 'ship' or 'test' mode (default: test).");
 			System.Console.WriteLine("    -output:dir     Specify output diretory (default: ../obj/...).");

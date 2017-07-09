@@ -83,12 +83,12 @@ namespace Org.Egevig.Nutbox.Htm2html
     class Program: Org.Egevig.Nutbox.Program
     {
 		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
-			"htm2html",						// Program
-			"v1.10",						// Version
+			"htm2html",						        // Program
+			"v1.10",						        // Version
 			Org.Egevig.Nutbox.Copyright.Company,	// Company
-			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Rights,	    // Rights
 			Org.Egevig.Nutbox.Copyright.Support,	// Support
-            Org.Egevig.Nutbox.Copyright.Website,   // Website
+            Org.Egevig.Nutbox.Copyright.Website,    // Website
 			Org.Egevig.Nutbox.Htm2html.Help.Text,	// Help
 			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
 			Org.Egevig.Nutbox.Copyright.Upper		// Upper

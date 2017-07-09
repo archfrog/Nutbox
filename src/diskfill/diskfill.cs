@@ -75,12 +75,12 @@ namespace Org.Egevig.Nutbox.Diskfill
 		const int BLOCKSIZE = 65536;
 
 		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
-			"diskfill",						// Program
-			"v1.11",						// Version
+			"diskfill",						        // Program
+			"v1.11",						        // Version
 			Org.Egevig.Nutbox.Copyright.Company,	// Company
-			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Rights,	    // Rights
 			Org.Egevig.Nutbox.Copyright.Support,	// Support
-            Org.Egevig.Nutbox.Copyright.Website,   // Website
+            Org.Egevig.Nutbox.Copyright.Website,    // Website
 			Org.Egevig.Nutbox.Diskfill.Help.Text,	// Help
 			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
 			Org.Egevig.Nutbox.Copyright.Upper		// Upper

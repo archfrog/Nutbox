@@ -59,12 +59,12 @@ namespace Org.Egevig.Nutbox.Diskfind
     class Program: Nutbox.Program
     {
 		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
-			"diskfind",						// Program
-			"v1.00",						// Version
+			"diskfind",						        // Program
+			"v1.00",						        // Version
 			Org.Egevig.Nutbox.Copyright.Company,	// Company
-			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Rights,	    // Rights
 			Org.Egevig.Nutbox.Copyright.Support,	// Support
-            Org.Egevig.Nutbox.Copyright.Website,   // Website
+            Org.Egevig.Nutbox.Copyright.Website,    // Website
 			Org.Egevig.Nutbox.Diskfind.Help.Text,	// Help
 			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
 			Org.Egevig.Nutbox.Copyright.Upper		// Upper

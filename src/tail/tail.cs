@@ -67,12 +67,12 @@ namespace Org.Egevig.Nutbox.Tail
     class Program: Org.Egevig.Nutbox.Program
     {
 		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
-			"tail",							// Program
-			"v1.01",						// Version
+			"tail",							        // Program
+			"v1.01",						        // Version
 			Org.Egevig.Nutbox.Copyright.Company,	// Company
-			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Rights,	    // Rights
 			Org.Egevig.Nutbox.Copyright.Support,	// Support
-            Org.Egevig.Nutbox.Copyright.Website,   // Website
+            Org.Egevig.Nutbox.Copyright.Website,    // Website
 			Org.Egevig.Nutbox.Tail.Help.Text,		// Help
 			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
 			Org.Egevig.Nutbox.Copyright.Upper		// Upper

@@ -79,13 +79,13 @@ namespace Org.Egevig.Nutbox.Rm
     class Program: Org.Egevig.Nutbox.Program
     {
 		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
-			"rm",							// Program
-			"v1.00",						// Version
+			"rm",							        // Program
+			"v1.00",						        // Version
 			Org.Egevig.Nutbox.Copyright.Company,	// Company
-			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Rights,	    // Rights
 			Org.Egevig.Nutbox.Copyright.Support,	// Support
-            Org.Egevig.Nutbox.Copyright.Website,   // Website
-			Org.Egevig.Nutbox.Rm.Help.Text,		// Help
+            Org.Egevig.Nutbox.Copyright.Website,    // Website
+			Org.Egevig.Nutbox.Rm.Help.Text,		    // Help
 			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
 			Org.Egevig.Nutbox.Copyright.Upper		// Upper
 		);

@@ -128,12 +128,12 @@ namespace Org.Egevig.Nutbox.Filefind
 	class Program: Org.Egevig.Nutbox.Program
 	{
 		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
-			"filefind",						// Program
-			"v1.11",						// Version
+			"filefind",						        // Program
+			"v1.11",						        // Version
 			Org.Egevig.Nutbox.Copyright.Company,	// Company
-			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Rights,	    // Rights
 			Org.Egevig.Nutbox.Copyright.Support,	// Support
-            Org.Egevig.Nutbox.Copyright.Website,   // Website
+            Org.Egevig.Nutbox.Copyright.Website,    // Website
 			Org.Egevig.Nutbox.Filefind.Help.Text,	// Help
 			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
 			Org.Egevig.Nutbox.Copyright.Upper		// Upper

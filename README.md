@@ -42,13 +42,12 @@ question over into `less`:
 
 No plans exists to create separate documentation as I don't like to have to maintain multiple sets of documentation.
 
-## CONTACT
-I can be contacted at mikael@lyngvig.org - please do not hesitate to contact me with your concerns, be it bugs, troubles using a
-command, or unexpected behavior.  Nutbox is quite mature but obviously will have bugs and short-comings like any software.
-
 ## WEBSITE
-The official website of Nutbox is: http://nutbox.lyngvig.org.
+The official website of Nutbox is: https://github.com/archfrog/Nutbox.
 
-## EMAIL
-My name is Mikael Lyngvig and my email address is mikael@lyngvig.org.
+## CONTACT
+My name is Mikael Egevig and my email address is mikael@egevig.org.
+
+Please do not hesitate to contact me with your concerns, be it bugs, troubles using a command, or unexpected behavior.  Nutbox is
+quite mature but obviously will have bugs and short-comings like any software.
 

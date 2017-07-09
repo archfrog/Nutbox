@@ -1,4 +1,4 @@
 obj/
-Build.exe
+src/build.exe
 *.hlp.cs
 

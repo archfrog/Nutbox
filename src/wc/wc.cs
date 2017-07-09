@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2015 Mikael Lyngvig (mikael@lyngvig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -7,7 +7,7 @@
 //     * Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer below.
 //     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
 //       disclaimer in the documentation and/or other materials provided with the distribution.
-//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived
+//     * Neither the name of Mikael Egevig nor the names of its contributors may be used to endorse or promote products derived
 //       from this software without specific prior written permission.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
@@ -19,15 +19,15 @@
 #endregion
 
 using System.Collections.Generic;	// List<T>
-using Org.Lyngvig.Nutbox.Options;			// ListValue()
+using Org.Egevig.Nutbox.Options;			// ListValue()
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.wc")]
 [assembly: AssemblyDescription("Counts the number of chars, word, and lines in one or more files")]
 [assembly: AssemblyConfiguration("SHIP")]
-[assembly: AssemblyCompany("Mikael Lyngvig")]
+[assembly: AssemblyCompany("Mikael Egevig")]
 [assembly: AssemblyProduct("Nutbox")]
-[assembly: AssemblyCopyright("Copyleft (-) 2009-2015 Mikael Lyngvig")]
+[assembly: AssemblyCopyright("Copyleft (-) 2009-2017 Mikael Egevig")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.1.0")]
@@ -35,9 +35,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Lyngvig.Nutbox.Wc
+namespace Org.Egevig.Nutbox.Wc
 {
-    class Setup: Org.Lyngvig.Nutbox.Setup
+    class Setup: Org.Egevig.Nutbox.Setup
     {
 		public const int CHARS  = 1;
 		public const int LINES  = 2;
@@ -91,7 +91,7 @@ namespace Org.Lyngvig.Nutbox.Wc
 			Option[] options =
 			{
 				// note: This is an interesting case of old meets new: The
-				// note: Org.Lyngvig.Nutbox.Options module is NOT intended to handle bitwise
+				// note: Org.Egevig.Nutbox.Options module is NOT intended to handle bitwise
 				// note: options (options that contribute to the same bitfield),
 				// note: but that's how GNU WC works.  So we bridge the gap
 				// note: between the two using the special DelegateOption class.
@@ -113,18 +113,18 @@ namespace Org.Lyngvig.Nutbox.Wc
 		}
     }
 
-    class Program: Org.Lyngvig.Nutbox.Program
+    class Program: Org.Egevig.Nutbox.Program
     {
-		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
+		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
 			"wc",							// Program
 			"v1.01",						// Version
-			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
-			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
-			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
-            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
-			Org.Lyngvig.Nutbox.Wc.Help.Text,		// Help
-			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
-			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
+			Org.Egevig.Nutbox.Copyright.Company,	// Company
+			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Support,	// Support
+            Org.Egevig.Nutbox.Copyright.Website,   // Website
+			Org.Egevig.Nutbox.Wc.Help.Text,		// Help
+			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
+			Org.Egevig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -228,7 +228,7 @@ namespace Org.Lyngvig.Nutbox.Wc
 		public static void Print(string filename, Counts value, int bits)
 		{
 			if (bits == 0)
-				throw new Org.Lyngvig.Nutbox.InternalError("Bitfield must be non-zero");
+				throw new Org.Egevig.Nutbox.InternalError("Bitfield must be non-zero");
 
 			if ((bits & Setup.LINES) != 0)
 				System.Console.Write("{0,7}", value.Lines);
@@ -241,7 +241,7 @@ namespace Org.Lyngvig.Nutbox.Wc
 			System.Console.WriteLine(" {0}", filename);
 		}
 
-        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Egevig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
@@ -262,7 +262,7 @@ namespace Org.Lyngvig.Nutbox.Wc
 
 			// handle the case of multiple input files
 			// ... expand wildcards
-			string[] files = Org.Lyngvig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
+			string[] files = Org.Egevig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
 
 			// report the stats of each file to the standard output device
 			Counts total = new Counts();
@@ -286,7 +286,7 @@ namespace Org.Lyngvig.Nutbox.Wc
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Egevig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

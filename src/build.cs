@@ -1,5 +1,5 @@
 #region license
-// Copyright (C) 2010-2015 Mikael Lyngvig (mikael@lyngvig.org).  All rights reserved.
+// Copyright (C) 2010-2017 Mikael Egevig (mikael@egevig.org).  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -7,7 +7,7 @@
 //     * Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer below.
 //     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
 //       disclaimer in the documentation and/or other materials provided with the distribution.
-//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived
+//     * Neither the name of Mikael Egevig nor the names of its contributors may be used to endorse or promote products derived
 //       from this software without specific prior written permission.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
@@ -40,7 +40,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Org.Lyngvig.Nutbox.Build
+namespace Org.Egevig.Nutbox.Build
 {
 	public class Environment
 	{
@@ -656,8 +656,8 @@ namespace Org.Lyngvig.Nutbox.Build
 			try
 			{
 				// tell the world who's running the show
-				System.Console.WriteLine("Nutbox.build v0.07 - http://nutbox.lyngvig.org");
-				System.Console.WriteLine("Copyright (C) 2009-2015 Mikael Lyngvig.  Donated to the Public Domain.");
+				System.Console.WriteLine("Nutbox.build v0.07 - https://github.com/archfrog/Nutbox");
+				System.Console.WriteLine("Copyright (C) 2009-2017 Mikael Egevig.  Donated to the Public Domain.");
 				System.Console.WriteLine();
 
 				// parse and check command-line parameters
@@ -692,7 +692,7 @@ namespace Org.Lyngvig.Nutbox.Build
 						continue;
 
 					// create or update the .hlp.cs file if, applicable
-					string helppath = "Org.Lyngvig.Nutbox." + MixedCase(program) + ".Help.Text";
+					string helppath = "Org.Egevig.Nutbox." + MixedCase(program) + ".Help.Text";
 					string source = program + '/' + program + ".hlp";
 					string target = program + '/' + program + ".hlp.cs";
 					if (setup.Clean || !System.IO.File.Exists(target) || FileDate(source) > FileDate(target))

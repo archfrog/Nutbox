@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2015 Mikael Lyngvig (mikael@lyngvig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -7,7 +7,7 @@
 //     * Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer below.
 //     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
 //       disclaimer in the documentation and/or other materials provided with the distribution.
-//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived
+//     * Neither the name of Mikael Egevig nor the names of its contributors may be used to endorse or promote products derived
 //       from this software without specific prior written permission.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
@@ -37,15 +37,15 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Org.Lyngvig.Nutbox.Options;
+using Org.Egevig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.dircmp")]
 [assembly: AssemblyDescription("Compares or synchronizes two directory trees")]
 [assembly: AssemblyConfiguration("SHIP")]
-[assembly: AssemblyCompany("Mikael Lyngvig")]
+[assembly: AssemblyCompany("Mikael Egevig")]
 [assembly: AssemblyProduct("Nutbox")]
-[assembly: AssemblyCopyright("Copyleft (-) 2009-2015 Mikael Lyngvig")]
+[assembly: AssemblyCopyright("Copyleft (-) 2009-2017 Mikael Egevig")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.1.0")]
@@ -53,9 +53,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Lyngvig.Nutbox.Dircmp
+namespace Org.Egevig.Nutbox.Dircmp
 {
-    class Setup: Org.Lyngvig.Nutbox.Setup
+    class Setup: Org.Egevig.Nutbox.Setup
     {
         // _deep: true => compare file contents
         private BooleanValue _deep = new BooleanValue(false);
@@ -124,18 +124,18 @@ namespace Org.Lyngvig.Nutbox.Dircmp
         }
     }
 
-    class Program: Org.Lyngvig.Nutbox.Program
+    class Program: Org.Egevig.Nutbox.Program
     {
-        static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
+        static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
             "dircmp",                   	// Program
             "v1.23",                    	// Version
-            Org.Lyngvig.Nutbox.Copyright.Company,   // Company
-            Org.Lyngvig.Nutbox.Copyright.Rights,    // Rights
-            Org.Lyngvig.Nutbox.Copyright.Support,   // Support
-            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
-            Org.Lyngvig.Nutbox.Dircmp.Help.Text,    // Help
-            Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
-            Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
+            Org.Egevig.Nutbox.Copyright.Company,   // Company
+            Org.Egevig.Nutbox.Copyright.Rights,    // Rights
+            Org.Egevig.Nutbox.Copyright.Support,   // Support
+            Org.Egevig.Nutbox.Copyright.Website,   // Website
+            Org.Egevig.Nutbox.Dircmp.Help.Text,    // Help
+            Org.Egevig.Nutbox.Copyright.Lower,		// Lower
+            Org.Egevig.Nutbox.Copyright.Upper		// Upper
         );
 
         public Program():
@@ -164,7 +164,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
         // The use of strings to indicate the status is a historical remnant from the Python
         // implementation of dircmp.  Ideally, I guess one would use Dictionary<string, Status>,
         // where Status is a suitable enumeration type.
-        public static Database Compare(Org.Lyngvig.Nutbox.DirList.DirMap source, Org.Lyngvig.Nutbox.DirList.DirMap target, bool Deep)
+        public static Database Compare(Org.Egevig.Nutbox.DirList.DirMap source, Org.Egevig.Nutbox.DirList.DirMap target, bool Deep)
         {
             Database result = new Database();
 
@@ -186,7 +186,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
                 }
 
                 // item exists in both source and target: compare items
-                Org.Lyngvig.Nutbox.DiskItem.Comparison cmp = Org.Lyngvig.Nutbox.DiskItem.DiskItemCompare(
+                Org.Egevig.Nutbox.DiskItem.Comparison cmp = Org.Egevig.Nutbox.DiskItem.DiskItemCompare(
                     (DiskItem) source[key],
                     (DiskItem) target[key],
                     Deep
@@ -197,7 +197,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
             return result;
         }
 
-        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Egevig.Nutbox.Setup nutbox_setup)
         {
             Setup setup = (Setup) nutbox_setup;
 
@@ -205,27 +205,27 @@ namespace Org.Lyngvig.Nutbox.Dircmp
             foreach (string exclude in setup.Exclude)
             {
                 if (exclude.Length == 0)
-                    throw new Org.Lyngvig.Nutbox.Exception("Empty exclusion specified");
+                    throw new Org.Egevig.Nutbox.Exception("Empty exclusion specified");
 
                 // exclusions must start with (back)slash
                 if (exclude[0] != System.IO.Path.DirectorySeparatorChar)
-                    throw new Org.Lyngvig.Nutbox.Exception("Exclusion must start with a path separator: " + exclude);
+                    throw new Org.Egevig.Nutbox.Exception("Exclusion must start with a path separator: " + exclude);
 
                 // exclusions must not end with a (back)slash
                 if (exclude[exclude.Length - 1] == System.IO.Path.DirectorySeparatorChar)
-                    throw new Org.Lyngvig.Nutbox.Exception("Exclusion must not end in a path separator: " + exclude);
+                    throw new Org.Egevig.Nutbox.Exception("Exclusion must not end in a path separator: " + exclude);
             }
 
             // ensure the source directory exists
             if (!System.IO.Directory.Exists(setup.SourceName))
-                throw new Org.Lyngvig.Nutbox.Exception("Source directory does not exist: " + setup.SourceName);
+                throw new Org.Egevig.Nutbox.Exception("Source directory does not exist: " + setup.SourceName);
 
             // handle the case of the missing target directory
             if (!System.IO.Directory.Exists(setup.TargetName))
             {
                 if (!setup.Sync)
                     // if not syncing, demand that the target exists (for scripting purposes)
-                    throw new Org.Lyngvig.Nutbox.Exception("Target directory does not exist: " + setup.TargetName);
+                    throw new Org.Egevig.Nutbox.Exception("Target directory does not exist: " + setup.TargetName);
 
                 // if syncing, create the non-existing target directory
                 System.IO.Directory.CreateDirectory(setup.TargetName);
@@ -235,7 +235,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
             // note: all names to a known format (makes stuff simpler later
             // note: on when we concatenate path elements to form a path).
             string _sourcename = System.IO.Path.GetFullPath(setup.SourceName);
-            _sourcename = Org.Lyngvig.Nutbox.Platform.Disk.Normalize(_sourcename);
+            _sourcename = Org.Egevig.Nutbox.Platform.Disk.Normalize(_sourcename);
             if (_sourcename[_sourcename.Length - 1] == System.IO.Path.DirectorySeparatorChar)
                 _sourcename = _sourcename.Substring(0, _sourcename.Length - 1);
 
@@ -243,18 +243,18 @@ namespace Org.Lyngvig.Nutbox.Dircmp
             // note: all names to a known format (makes stuff simpler later
             // note: on when we concatenate path elements to form a path).
             string _targetname = System.IO.Path.GetFullPath(setup.TargetName);
-            _targetname = Org.Lyngvig.Nutbox.Platform.Disk.Normalize(_targetname);
+            _targetname = Org.Egevig.Nutbox.Platform.Disk.Normalize(_targetname);
             if (_targetname[_targetname.Length - 1] == System.IO.Path.DirectorySeparatorChar)
                 _targetname = _targetname.Substring(0, _targetname.Length - 1);
 
             // handle the case of source being identical to target
             // we flag this as an error for the sake of script writers
             if (_sourcename == _targetname)
-                throw new Org.Lyngvig.Nutbox.Exception("Source and target are identical");
+                throw new Org.Egevig.Nutbox.Exception("Source and target are identical");
 
             // create lists of items in source and in target (multi-threaded!)
-            Org.Lyngvig.Nutbox.DirList source = new Org.Lyngvig.Nutbox.DirList(_sourcename, setup.Exclude);
-            Org.Lyngvig.Nutbox.DirList target = new Org.Lyngvig.Nutbox.DirList(_targetname, setup.Exclude);
+            Org.Egevig.Nutbox.DirList source = new Org.Egevig.Nutbox.DirList(_sourcename, setup.Exclude);
+            Org.Egevig.Nutbox.DirList target = new Org.Egevig.Nutbox.DirList(_targetname, setup.Exclude);
             Thread sourceThread = new Thread(new ThreadStart(source.ThreadedLoad));
             Thread targetThread = new Thread(new ThreadStart(target.ThreadedLoad));
             sourceThread.Start();
@@ -322,14 +322,14 @@ namespace Org.Lyngvig.Nutbox.Dircmp
                         if (source.Values[key].IsDirectory &&
                             !target.Values[key].IsDirectory)
                         {
-                            Org.Lyngvig.Nutbox.Platform.File.Delete(targetname, setup.Force);
+                            Org.Egevig.Nutbox.Platform.File.Delete(targetname, setup.Force);
                             System.IO.Directory.CreateDirectory(targetname);
                         }
 
                         // if source is a file and target is a directory
                         if (!source.Values[key].IsDirectory &&
                             target.Values[key].IsDirectory)
-                            Org.Lyngvig.Nutbox.Platform.Directory.Delete(targetname, true, setup.Force);
+                            Org.Egevig.Nutbox.Platform.Directory.Delete(targetname, true, setup.Force);
 
                         // post-process directories later on (copy their time stamps)
                         if (source.Values[key].IsDirectory)
@@ -356,7 +356,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
                         // ensure the file has been removed if it was renamed
                         // e.g. "Foo Or Bar" is renamed to "Foo or Bar"
                         if (System.IO.File.Exists(targetname))
-                            Org.Lyngvig.Nutbox.Platform.File.Delete(targetname, setup.Force);
+                            Org.Egevig.Nutbox.Platform.File.Delete(targetname, setup.Force);
 
                         // copy everything including file attributes
                         System.IO.File.Copy(sourcename, targetname);
@@ -370,13 +370,13 @@ namespace Org.Lyngvig.Nutbox.Dircmp
                             if (!System.IO.Directory.Exists(targetname))
                                 continue;
 
-                            Org.Lyngvig.Nutbox.Platform.Directory.Delete(targetname, true, setup.Force);
+                            Org.Egevig.Nutbox.Platform.Directory.Delete(targetname, true, setup.Force);
                             continue;
                         }
 
                         if (System.IO.File.Exists(targetname))
                         {
-                            Org.Lyngvig.Nutbox.Platform.File.Delete(targetname, setup.Force);
+                            Org.Egevig.Nutbox.Platform.File.Delete(targetname, setup.Force);
                         }
                         break;
                 }
@@ -411,7 +411,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
                             if (!source.Values[key].IsDirectory)
                                 continue;
 
-                            Org.Lyngvig.Nutbox.Platform.Disk.CopyTimeStamp(sourcename, targetname);
+                            Org.Egevig.Nutbox.Platform.Disk.CopyTimeStamp(sourcename, targetname);
                             break;
 
                         case '-':
@@ -426,7 +426,7 @@ namespace Org.Lyngvig.Nutbox.Dircmp
             Setup setup     = new Setup();
             Program program = new Program();
 
-            // let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
+            // let Org.Egevig.Nutbox.Program.Main() handle exceptions, etc.
             return program.Main(setup, args);
         }
     }

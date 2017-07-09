@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2015 Mikael Lyngvig (mikael@lyngvig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -7,7 +7,7 @@
 //     * Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer below.
 //     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
 //       disclaimer in the documentation and/or other materials provided with the distribution.
-//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived
+//     * Neither the name of Mikael Egevig nor the names of its contributors may be used to endorse or promote products derived
 //       from this software without specific prior written permission.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
@@ -20,15 +20,15 @@
 
 using System;
 using System.Collections.Generic;
-using Org.Lyngvig.Nutbox.Options;
+using Org.Egevig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.touch")]
 [assembly: AssemblyDescription("Touches (updates the time of) one or more files")]
 [assembly: AssemblyConfiguration("SHIP")]
-[assembly: AssemblyCompany("Mikael Lyngvig")]
+[assembly: AssemblyCompany("Mikael Egevig")]
 [assembly: AssemblyProduct("Nutbox")]
-[assembly: AssemblyCopyright("Copyleft (-) 2009-2015 Mikael Lyngvig")]
+[assembly: AssemblyCopyright("Copyleft (-) 2009-2017 Mikael Egevig")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.1.0")]
@@ -36,9 +36,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Lyngvig.Nutbox.Touch
+namespace Org.Egevig.Nutbox.Touch
 {
-    class Setup: Org.Lyngvig.Nutbox.Setup
+    class Setup: Org.Egevig.Nutbox.Setup
     {
 		private ListValue mWildcards = new ListValue();
 		public List<string> Wildcards
@@ -85,18 +85,18 @@ namespace Org.Lyngvig.Nutbox.Touch
 
     // Program:
     // The program class that contains all the actual program code.
-    class Program: Org.Lyngvig.Nutbox.Program
+    class Program: Org.Egevig.Nutbox.Program
     {
-		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
+		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
 			"touch",						// Program
 			"v1.00",						// Version
-			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
-			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
-			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
-            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
-			Org.Lyngvig.Nutbox.Touch.Help.Text,		// Help
-			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
-			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
+			Org.Egevig.Nutbox.Copyright.Company,	// Company
+			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Support,	// Support
+            Org.Egevig.Nutbox.Copyright.Website,   // Website
+			Org.Egevig.Nutbox.Touch.Help.Text,		// Help
+			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
+			Org.Egevig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -104,12 +104,12 @@ namespace Org.Lyngvig.Nutbox.Touch
 		{
 		}
 
-        public override void Main(Org.Lyngvig.Nutbox.Setup nutbox_setup)
+        public override void Main(Org.Egevig.Nutbox.Setup nutbox_setup)
         {
 			Setup setup = (Setup) nutbox_setup;
 
 			// expand wildcards into actual file and directory names
-			// note: We cannot use Org.Lyngvig.Nutbox.Platform.File.Find(string[], bool)
+			// note: We cannot use Org.Egevig.Nutbox.Platform.File.Find(string[], bool)
 			// note: because we have to tread carefully around wildcards.
 			List<string> found = new List<string>();
 			foreach (string wildcard in setup.Wildcards)
@@ -123,9 +123,9 @@ namespace Org.Lyngvig.Nutbox.Touch
 				}
 
 				// must be a file specification (rm does not do match on dirs)
-				string[] matches = Org.Lyngvig.Nutbox.Platform.File.Find(wildcard, setup.Recurse);
+				string[] matches = Org.Egevig.Nutbox.Platform.File.Find(wildcard, setup.Recurse);
 				if (matches.Length == 0)
-					throw new Org.Lyngvig.Nutbox.Exception("No matches found: " + wildcard);
+					throw new Org.Egevig.Nutbox.Exception("No matches found: " + wildcard);
 
 				// add all matched items to the list of found items
 				foreach (string match in matches)
@@ -162,7 +162,7 @@ namespace Org.Lyngvig.Nutbox.Touch
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Egevig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
     }

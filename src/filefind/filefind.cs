@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2015 Mikael Lyngvig (mikael@lyngvig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -7,7 +7,7 @@
 //     * Redistributions of source code must retain the above copyright notice, this list of conditions and the disclaimer below.
 //     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
 //       disclaimer in the documentation and/or other materials provided with the distribution.
-//     * Neither the name of Mikael Lyngvig nor the names of its contributors may be used to endorse or promote products derived
+//     * Neither the name of Mikael Egevig nor the names of its contributors may be used to endorse or promote products derived
 //       from this software without specific prior written permission.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
@@ -20,15 +20,15 @@
 
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Org.Lyngvig.Nutbox.Options;
+using Org.Egevig.Nutbox.Options;
 
 using System.Reflection;
 [assembly: AssemblyTitle("Nutbox.filefind")]
 [assembly: AssemblyDescription("Finds a string matching a regular expression in one or more files")]
 [assembly: AssemblyConfiguration("SHIP")]
-[assembly: AssemblyCompany("Mikael Lyngvig")]
+[assembly: AssemblyCompany("Mikael Egevig")]
 [assembly: AssemblyProduct("Nutbox")]
-[assembly: AssemblyCopyright("Copyleft (-) 2009-2015 Mikael Lyngvig")]
+[assembly: AssemblyCopyright("Copyleft (-) 2009-2017 Mikael Egevig")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.1.0")]
@@ -36,9 +36,9 @@ using System.Reflection;
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]
 
-namespace Org.Lyngvig.Nutbox.Filefind
+namespace Org.Egevig.Nutbox.Filefind
 {
-	class Setup: Org.Lyngvig.Nutbox.Setup
+	class Setup: Org.Egevig.Nutbox.Setup
 	{
 		private BooleanValue mAbsolute = new BooleanValue(false);
 		public bool Absolute 	// true => display absolute file names
@@ -125,18 +125,18 @@ namespace Org.Lyngvig.Nutbox.Filefind
 		}
 	}
 
-	class Program: Org.Lyngvig.Nutbox.Program
+	class Program: Org.Egevig.Nutbox.Program
 	{
-		static Org.Lyngvig.Nutbox.Information _info = new Org.Lyngvig.Nutbox.Information(
+		static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
 			"filefind",						// Program
 			"v1.11",						// Version
-			Org.Lyngvig.Nutbox.Copyright.Company,	// Company
-			Org.Lyngvig.Nutbox.Copyright.Rights,	// Rights
-			Org.Lyngvig.Nutbox.Copyright.Support,	// Support
-            Org.Lyngvig.Nutbox.Copyright.Website,   // Website
-			Org.Lyngvig.Nutbox.Filefind.Help.Text,	// Help
-			Org.Lyngvig.Nutbox.Copyright.Lower,		// Lower
-			Org.Lyngvig.Nutbox.Copyright.Upper		// Upper
+			Org.Egevig.Nutbox.Copyright.Company,	// Company
+			Org.Egevig.Nutbox.Copyright.Rights,	// Rights
+			Org.Egevig.Nutbox.Copyright.Support,	// Support
+            Org.Egevig.Nutbox.Copyright.Website,   // Website
+			Org.Egevig.Nutbox.Filefind.Help.Text,	// Help
+			Org.Egevig.Nutbox.Copyright.Lower,		// Lower
+			Org.Egevig.Nutbox.Copyright.Upper		// Upper
 		);
 
 		public Program():
@@ -227,13 +227,13 @@ namespace Org.Lyngvig.Nutbox.Filefind
 			// handle the complex case of one or more input files
 
 			// expand wildcards
-			string[] files = Org.Lyngvig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
+			string[] files = Org.Egevig.Nutbox.Platform.File.Find(setup.Wildcards, setup.Recurse);
 
 			// check that each specified and found file actually exists
 			foreach (string file in files)
 			{
 				if (!System.IO.File.Exists(file))
-					throw new Org.Lyngvig.Nutbox.Exception("File not found: " + file);
+					throw new Org.Egevig.Nutbox.Exception("File not found: " + file);
 			}
 
 			// search each file in the list of files to be searched
@@ -266,7 +266,7 @@ namespace Org.Lyngvig.Nutbox.Filefind
 			Setup setup     = new Setup();
 			Program program = new Program();
 
-			// let Org.Lyngvig.Nutbox.Program.Main() handle exceptions, etc.
+			// let Org.Egevig.Nutbox.Program.Main() handle exceptions, etc.
 			return program.Main(setup, args);
 		}
 	}

@@ -9,12 +9,12 @@ Roughly speaking, the differences are:
 
     1. Nutbox runs natively on Windows platforms whereas GNU tools must be
        hacked quite a bit to make them build on Windows (as far as I know).
-    2. Nutbox also runs on Linux, Solaris, and Macintosh using Mono.  GNU 
-       runs on a host of platforms - way too many to mention here - and is 
-       probably ported to more platforms each and every day.  Nutbox will 
-       forever be locked in on the Microsoft .NET platform for which reason 
-       it cannot run on any other platforms than those that are supported
-       by .NET or Mono.
+    2. Nutbox also runs on Linux, and Macintosh using Mono.  GNU runs on a
+       host of platforms - way too many to mention here - and is probably
+       ported to more platforms each and every day.  Nutbox will forever be
+       locked in on the Microsoft .NET platform for which reason it cannot
+       run on any other platforms than those that are supported by .NET or
+       Mono.
     3. GNU tools attempt to solve every conceivable need under the sky, whereas
        Nutbox only attempts to solve the everyday needs of most people.  A
        typical GNU tool boasts twenty or more options.  A typical Nutbox tool

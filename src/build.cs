@@ -1,5 +1,5 @@
 #region license
-// Copyright (C) 2010-2017 Mikael Egevig (mikael@egevig.org).  All rights reserved.
+// Copyright (C) 2010-2020 Mikael Egevig (mikael@egevig.org).  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -282,7 +282,7 @@ namespace Org.Egevig.Nutbox.Build
 		}
 
 		/** The name of the compiler executable. */
-		private string _compiler = (System.Type.GetType("Mono.Runtime") != null) ? "mcs.bat" : "csc.exe";
+		private string _compiler = (System.Type.GetType("Mono.Runtime") != null) ? "mcs" : "csc.exe";
 		public string Compiler
 		{
 			get { return _compiler; }
@@ -419,12 +419,7 @@ namespace Org.Egevig.Nutbox.Build
 
 							case "MONO":
 								_platform = "Mono";
-								_compiler = "mcs.bat";	/** \note Won't work on Linux, but must be used this way on Windoze. */
-								break;
-
-							case "DOTGNU":
-								_platform = "dotGNU";
-								_compiler = "unknown";
+								_compiler = "mcs";
 								break;
 
 							default:
@@ -499,7 +494,7 @@ namespace Org.Egevig.Nutbox.Build
 			System.Console.WriteLine("    -logo           Flip 'logo' flag (default: off).");
 			System.Console.WriteLine("    -mode:name      Select 'ship' or 'test' mode (default: test).");
 			System.Console.WriteLine("    -output:dir     Specify output diretory (default: ../obj/...).");
-			System.Console.WriteLine("    -platform:name  Specify name of compiler platform (.NET, Mono, or dotGNU).");
+			System.Console.WriteLine("    -platform:name  Specify name of compiler platform (.NET or Mono).");
 			System.Console.WriteLine("    -verbose:n      Specify verbosity level (0 to 2, default: 1).");
 		}
 	}
@@ -656,8 +651,8 @@ namespace Org.Egevig.Nutbox.Build
 			try
 			{
 				// tell the world who's running the show
-				System.Console.WriteLine("Nutbox.build v0.07 - https://github.com/archfrog/Nutbox");
-				System.Console.WriteLine("Copyright (C) 2009-2017 Mikael Egevig.  Donated to the Public Domain.");
+				System.Console.WriteLine("Nutbox.build v0.08 - https://github.com/archfrog/Nutbox");
+				System.Console.WriteLine("Copyright (C) 2009-2020 Mikael Egevig.  Donated to the Public Domain.");
 				System.Console.WriteLine();
 
 				// parse and check command-line parameters

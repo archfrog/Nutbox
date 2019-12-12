@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2020 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -27,6 +27,7 @@ namespace Org.Egevig.Nutbox
         public static readonly string Website = "https://github.com/archfrog/Nutbox";
 		public static readonly string Rights  = "Donated to the Public Domain";
 		public static readonly int    Lower   = 2009;
-		public static readonly int    Upper   = 2017;
+		public static readonly int    Upper   = 2020;
 	}
 }
+

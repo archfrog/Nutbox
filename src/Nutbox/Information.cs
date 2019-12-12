@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2020 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:

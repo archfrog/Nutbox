@@ -1,5 +1,5 @@
 #region license
-// Copyleft (-) 2009-2017 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
+// Copyleft (-) 2009-2020 Mikael Egevig (mikael@egevig.org).  Donated to the Public Domain.
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 // conditions are met:
@@ -37,10 +37,10 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("SHIP")]
 [assembly: AssemblyCompany("Mikael Egevig")]
 [assembly: AssemblyProduct("Nutbox")]
-[assembly: AssemblyCopyright("Copyleft (-) 2009-2017 Mikael Egevig")]
+[assembly: AssemblyCopyright("Copyleft (-) 2009-2020 Mikael Egevig")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.0.2.0")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyName("")]
 [assembly: System.CLSCompliant(true)]

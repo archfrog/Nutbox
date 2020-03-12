@@ -84,6 +84,13 @@ namespace Org.Egevig.Nutbox.Dircmp
             get { return _full.Value; }
         }
 
+        // _progress => update the console title with percentage info
+        private BooleanValue _progress = new BooleanValue(true);
+        public bool Progress
+        {
+            get { return _progress.Value; }
+        }
+
         private StringValue _sourcename = new StringValue(null);
         public string SourceName
         {
@@ -114,6 +121,8 @@ namespace Org.Egevig.Nutbox.Dircmp
                 new FalseOption("noforce", _force),
                 new TrueOption("full", _full),
                 new FalseOption("nofull", _full),
+                new FalseOption("noprogress", _progress),
+                new TrueOption("progress", _progress),
                 new TrueOption("sync", _sync),
                 new FalseOption("nosync", _sync),
                 new ListOption("exclude", _exclude),
@@ -128,7 +137,7 @@ namespace Org.Egevig.Nutbox.Dircmp
     {
         static Org.Egevig.Nutbox.Information _info = new Org.Egevig.Nutbox.Information(
             "dircmp",                   	        // Program
-            "v1.23",                    	        // Version
+            "v1.25",                    	        // Version
             Org.Egevig.Nutbox.Copyright.Company,    // Company
             Org.Egevig.Nutbox.Copyright.Rights,     // Rights
             Org.Egevig.Nutbox.Copyright.Support,    // Support
@@ -164,7 +173,12 @@ namespace Org.Egevig.Nutbox.Dircmp
         // The use of strings to indicate the status is a historical remnant from the Python
         // implementation of dircmp.  Ideally, I guess one would use Dictionary<string, Status>,
         // where Status is a suitable enumeration type.
-        public static Database Compare(Org.Egevig.Nutbox.DirList.DirMap source, Org.Egevig.Nutbox.DirList.DirMap target, bool Deep)
+        public static Database Compare(
+            Org.Egevig.Nutbox.DirList.DirMap source,
+            Org.Egevig.Nutbox.DirList.DirMap target,
+            bool Deep,
+            bool Progress
+        )
         {
             Database result = new Database();
 
@@ -177,8 +191,18 @@ namespace Org.Egevig.Nutbox.Dircmp
                 result[key] = '+';
 
             // process each item in the target set of objects
+            long index = -1;
             foreach (string key in target.Keys)
             {
+                index += 1;
+
+                // update console title to indicate percentage progressed
+                if (Progress)
+                {
+                    double percent = ((double) index / (double) target.Keys.Count) * 100.0;
+                    System.Console.Title = string.Format("dircmp: {0:0.00}% - {1}", percent, key);
+                }
+
                 if (!source.ContainsKey(key))
                 {
                     result[key] = '-';  // item exists only in target: mark as to be deleted
@@ -269,7 +293,7 @@ namespace Org.Egevig.Nutbox.Dircmp
                 throw target.Exception;
 
             // analyze source and target items
-            Database comparison = Compare(source.Values, target.Values, setup.Deep);
+            Database comparison = Compare(source.Values, target.Values, setup.Deep, setup.Progress);
 
             // sort the keys so as to report the files alphabetically
             ICollection<string> keys_unsorted = comparison.Keys;

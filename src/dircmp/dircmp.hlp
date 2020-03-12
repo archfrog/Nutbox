@@ -23,6 +23,7 @@ OPTIONS
     --exclude:x  Exclude directory 'x' (\x) from the comparison and update.
     --force      Force deletion of read-only files and directories.
     --full       Display equal items too.
+	--progress   Display progress information in the console title.
     --sync       Synchronize target with source.
 
     Any long option can be prefixed with 'no' to disable it.

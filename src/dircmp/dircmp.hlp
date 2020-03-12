@@ -15,18 +15,19 @@ DESCRIPTION
        1. 'dircmp' reports a very concise and brief difference report, which
           is very suitable for further automatic processing.
        2. 'dircmp' offers the option of synchronizing the target to the source.
-       3. 'dircmp' runs out-of-the-box on a host of platforms.
+       3. 'dircmp' runs out-of-the-box on all .NET platforms.
        4. 'dircmp' offers full Unicode support (as does all of Nutbox).
 
 OPTIONS
-    --deep       Enable deep comparison of file data (compare contents).
-    --exclude:x  Exclude directory 'x' (\x) from the comparison and update.
-    --force      Force deletion of read-only files and directories.
-    --full       Display equal items too.
-	--progress   Display progress information in the console title.
-    --sync       Synchronize target with source.
+    --deep        Enable deep comparison of file data (compare contents).
+    --exclude:x   Exclude directory 'x' (\x) from the comparison and update.
+    --force       Force deletion of read-only files and directories.
+    --full        Display equal items too.
+    --progress   *Display progress information in the console title.
+    --sync        Synchronize target with source.
 
     Any long option can be prefixed with 'no' to disable it.
+    Options marked with * are enabled by default.
 
 LEGEND
     =   The item is identical in both source and target.

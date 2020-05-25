@@ -180,6 +180,8 @@ namespace Org.Egevig.Nutbox.Dircmp
             bool Progress
         )
         {
+            string console_title = System.Console.Title;
+
             Database result = new Database();
 
             // ugly code follows but that's because C# hash tables being iterated are immutable
@@ -192,6 +194,7 @@ namespace Org.Egevig.Nutbox.Dircmp
 
             // process each item in the target set of objects
             long index = -1;
+            long target_key_count = target.Keys.Count;
             foreach (string key in target.Keys)
             {
                 index += 1;
@@ -199,8 +202,9 @@ namespace Org.Egevig.Nutbox.Dircmp
                 // update console title to indicate percentage progressed
                 if (Progress)
                 {
-                    double percent = ((double) index / (double) target.Keys.Count) * 100.0;
-                    System.Console.Title = string.Format("dircmp: {0:0.00}% - {1}", percent, key);
+                    double percent = ((double) index / (double) target_key_count) * 100.0;
+                    percent = System.Math.Min(100.0, percent);
+                    System.Console.Title = string.Format("dircmp (comparing): {0:0.00}% - {1}", percent, key);
                 }
 
                 if (!source.ContainsKey(key))
@@ -217,6 +221,8 @@ namespace Org.Egevig.Nutbox.Dircmp
                 );
                 result[key] = (cmp.DataChanged || cmp.SizeChanged || cmp.TimeChanged || cmp.TypeChanged) ? '*' : '=';
             }
+
+            System.Console.Title = console_title;
 
             return result;
         }
@@ -302,8 +308,21 @@ namespace Org.Egevig.Nutbox.Dircmp
             Array.Sort(keys);
 
             // report differences
+            long index = -1;
+            long target_key_count = target.Values.Keys.Count;
+            string original_title = System.Console.Title;
             foreach (string key in keys)
             {
+                index += 1;
+
+                // update console title to indicate percentage progressed
+                if (setup.Progress)
+                {
+                    double percent = ((double) index / (double) target_key_count) * 100.0;
+                    percent = System.Math.Min(100.0, percent);
+                    System.Console.Title = string.Format("dircmp (mirroring): {0:0.00}% - {1}", percent, key);
+                }
+
                 // skip processing identical items unless -full is specified
                 if (!setup.Full && comparison[key] == '=')
                     continue;
